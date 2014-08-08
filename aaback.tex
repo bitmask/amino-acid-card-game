@@ -1,0 +1,36 @@
+
+\input{cardpreamble}
+
+
+\begin{document}
+
+        \begin{tikzpicture}[card]
+
+            % TODO why can't the matrix env be in the preamble?
+            % TODO add the lines on aaback
+        
+            \node[matrix, column sep=0cm,row sep=0cm] at (trimmed page.center) {
+            \sqc{G} & \sqt{G} & \sqt{G} &    \sqt{G} & \sqt{A} & \sqt{G} &    \sqt{G} & \sqt{C} & \sqt{G} &    \sqt{G} & \sqt{T} & \sqc{G}    \\
+            \sqe{G} & \sq{G} & \sq{A} &    \sq{G} & \sq{A} & \sq{A} &    \sq{G} & \sq{C} & \sq{A} &    \sq{G} & \sq{T} & \sqe{A}    \\
+            \sqe{G} & \sq{G} & \sq{C} &    \sq{G} & \sq{A} & \sq{C} &    \sq{G} & \sq{C} & \sq{C} &    \sq{G} & \sq{T} & \sqe{C}    \\
+            \sqe{G} & \sq{G} & \sq{T} &    \sq{G} & \sq{A} & \sq{T} &    \sq{G} & \sq{C} & \sq{T} &    \sq{G} & \sq{T} & \sqe{T}    \\
+            \sqe{A} & \sq{G} & \sq{G} &    \sq{A} & \sq{A} & \sq{G} &    \sq{A} & \sq{C} & \sq{G} &    \sq{A} & \sq{T} & \sqe{G}    \\
+            \sqe{A} & \sq{G} & \sq{A} &    \sq{A} & \sq{A} & \sq{A} &    \sq{A} & \sq{C} & \sq{A} &    \sq{A} & \sq{T} & \sqe{A}    \\
+            \sqe{A} & \sq{G} & \sq{C} &    \sq{A} & \sq{A} & \sq{C} &    \sq{A} & \sq{C} & \sq{C} &    \sq{A} & \sq{T} & \sqe{C}    \\
+            \sqe{A} & \sq{G} & \sq{T} &    \sq{A} & \sq{A} & \sq{T} &    \sq{A} & \sq{C} & \sq{T} &    \sq{A} & \sq{T} & \sqe{T}    \\
+            \sqe{C} & \sq{G} & \sq{G} &    \sq{C} & \sq{A} & \sq{G} &    \sq{C} & \sq{C} & \sq{G} &    \sq{C} & \sq{T} & \sqe{G}    \\
+            \sqe{C} & \sq{G} & \sq{A} &    \sq{C} & \sq{A} & \sq{A} &    \sq{C} & \sq{C} & \sq{A} &    \sq{C} & \sq{T} & \sqe{A}    \\
+            \sqe{C} & \sq{G} & \sq{C} &    \sq{C} & \sq{A} & \sq{C} &    \sq{C} & \sq{C} & \sq{C} &    \sq{C} & \sq{T} & \sqe{C}    \\
+            \sqe{C} & \sq{G} & \sq{T} &    \sq{C} & \sq{A} & \sq{T} &    \sq{C} & \sq{C} & \sq{T} &    \sq{C} & \sq{T} & \sqe{G}    \\
+            \sqe{T} & \sq{G} & \sq{G} &    \sq{T} & \sq{A} & \sq{G} &    \sq{A} & \sq{C} & \sq{G} &    \sq{T} & \sq{T} & \sqe{G}    \\
+            \sqe{T} & \sq{G} & \sq{A} &    \sq{T} & \sq{A} & \sq{A} &    \sq{A} & \sq{C} & \sq{A} &    \sq{T} & \sq{T} & \sqe{A}    \\
+            \sqe{T} & \sq{G} & \sq{C} &    \sq{T} & \sq{A} & \sq{C} &    \sq{A} & \sq{C} & \sq{C} &    \sq{T} & \sq{T} & \sqe{C}    \\
+            \sqc{T} & \sqt{G} & \sqt{T} &    \sqt{T} & \sqt{A} & \sqt{T} &    \sqt{A} & \sqt{C} & \sqt{T} &    \sqt{T} & \sqt{T} & \sqc{T}    \\
+            };
+
+        \end{tikzpicture}    
+        \clearpage
+
+
+\end{document}
+

@@ -1,0 +1,33 @@
+
+\input{cardpreamble}
+
+
+\begin{document}
+
+    \begin{tikzpicture}[card]
+
+        \node (leftlevel)   [yshift=-8.0cm]               at (stock page.north west) {};
+        \node (firstpeak)   [yshift=-7.6cm, xshift=4.0cm] at (stock page.north west) {};
+        \node (firsttrough) [yshift=-7.8cm, xshift=5.0cm] at (stock page.north west) {};
+        \node (secondpeak)  [yshift=-7.4cm, xshift=6.5cm] at (stock page.north west) {};
+        \node (rightlevel)  [yshift=-8.0cm]               at (stock page.north east) {};
+        \draw [fill=lightblue] (stock page.south east) to[out=180,in=0] (stock page.south west) to[out=90,in=270] 
+            (leftlevel) to [out=30, in=285] (firstpeak) to [out=315, in=225] (secondpeak) to [out=255, in=315] (rightlevel)
+            to [out=270, in=90] (stock page.south east);
+
+
+
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Water OFF};
+        \matrix (matt) [matrix of nodes, column sep=1cm, row sep=0.2cm] at (trimmed page.center) {
+            \phantom{Ag} \scalefont{1.4}{Alanine} & \scalefont{1.4}{Cysteine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{Histidine} & \scalefont{1.4}{Isoleucine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{Leucine} & \scalefont{1.4}{Methionine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{Phenylalanine} & \scalefont{1.4}{Tryptophan} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{Tyrosine} & \scalefont{1.4}{Valine} \phantom{Ag}\\
+        };
+        \node [above= 1cm of matt, text width=4.5cm, align=center] {\scalefont{1.4}{Translate only the \\ hydrophobic amino acids:}};
+        \node[anchor=south east, yshift=0.25cm, xshift=-0.25cm] at (trimmed page.south east) {\usebox{\hydrobigwhite}};
+    \end{tikzpicture}    
+    \clearpage
+
+\end{document}

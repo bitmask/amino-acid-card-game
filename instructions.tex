@@ -1,0 +1,761 @@
+
+% build each card individually twice or three times
+% then build the instructions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Instructions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt,oneside]{memoir} 
+% A4 210 × 297 mm
+%\usepackage[textheight={26.5cm},textwidth={17cm}, marginparsep={0.6cm}, marginparwidth={1cm}, includemp, centering]{geometry}
+
+%\setstocksize{4in}{3in}  % height, width
+%\settrimmedsize{3.75in}{2.75in}{*}
+%\settrims{0.125in}{0.125in}
+
+%\settypeblocksize{26.6cm}{17cm}{*}
+%\setlrmargins{1cm}{1cm}{*}
+%\setulmargins{1cm}{1cm}{*}
+%\checkandfixthelayout
+
+\setulmarginsandblock{1.5cm}{1.5cm}{*}
+\setlrmarginsandblock{1.5cm}{1.5cm}{*}
+\checkandfixthelayout
+
+% TODOv2 UTF8
+
+\usepackage{enumitem}
+\setlist{nolistsep} % or \setlist{noitemsep} to leave space around whole list
+
+\usepackage{placeins} % provides \FloatBarrier
+
+\usepackage{nameref}  % refer to the name of the sections not their numbers
+
+\usepackage{wrapfig} % wrap text around tikzpicture
+
+\usepackage{graphicx} % include the completed cards on the page as pdfs.  is there a better way?
+
+\usepackage{cclicenses} % draw the cc symbol
+
+\usepackage{wasysym} % draw :) and :(
+
+\input{preamble}
+
+
+
+\usetikzlibrary{arrows,positioning} 
+\tikzset{
+    % Define arrow style
+    mut/.style={
+           latex-latex,
+           line width=2pt,
+           color=lightgrey,
+           text=black,
+           }
+}
+
+
+
+\title{Translation: The Amino Acid Card Game}
+\author{}
+\date{}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Who should play?}
+
+\begin{itemize}
+    \item Number of players: 2-6
+    % TODO how many players
+    \item Ages: 12 and up
+\end{itemize}
+
+
+\section*{What is this game about?}
+
+\textbf{Translation: The Amino Acid Card Game} is a deck building game.
+During the game, you will spend action points to create a deck of powerful mutations, which you will apply to translate amino acids from a nucleotide sequence.
+The more amino acids of the same group that you collect, the higher your score will become. \\
+
+This game does not require any knowledge of biology to play.
+In fact, it is designed to sneak information about the amino acids and their properties into game play, and to help you learn and remember them as you play.
+
+
+\section*{Parts}
+
+The game is composed of the following parts.
+\begin{itemize}
+    \item 20 amino acid cards
+    \item 20 nucleotide cards
+    \item 48 action cards, of 9 different types
+    % 6 toggle water
+    % 6*3 = 18 extend
+    % 6/2 = 3 delete
+    % 6/2 = 3 insert
+    % 6/2 = 3 rev comp seq
+    % 6/2 = 3 comp
+    % 6/2 = 3 trans
+    % 6/2 = 3 transver
+    % 6/2 = 3 mutate
+    \item 1 water level card (ON/OFF)
+    \item 1 card to mark the 5' end
+    %\item 6 turn summary cards
+    %\item 1 nucleotide and mutation summary card
+    \item 1 4-sided die with A, C, T, G on each side
+    \item These instructions
+\end{itemize}
+
+
+\section*{Biological background}
+\label{bio}
+
+You do not need to read this section to play the game, but it will help you understand what is going on, and why the cards are the way they are.\\
+
+Every living thing is made of cells, and all cells contain DNA.
+DNA codes for proteins, which are the functional components of cells.
+You may have heard that DNA is a double helix; this means that it is composed of two strands that are twisted together.
+Each strand is a chain of nucleotides, which are also called base pairs.
+There are 4 types of nucleotide: A, C, T and G.\\
+
+Each nucleotide on one strand is paired with a nucleotide on the other strand, but the pairing is not random.
+A will always pair with T, and C will always pair with G.  
+If you look at the nucleotide cards, you will see A and T on one side, and C and G on the other side, representing the two possible pairs.
+The top of the card is one strand, and the bottom of the card is the other strand.
+The nucleotide pairs reach across the strands, like the rungs on a ladder.
+The DNA sequence has a direction, and it is always read from the 5' end to the 3' end.
+Both strands are read 5' to 3', but the ends are reversed on the two strands.
+To continue the ladder analogy, imagine that you can only climb up the ladder on the left hand side, and you can only climb down on the right hand side.
+During the game, only one strand will be active at a time -- the 5' end that you read from will be indicated by the 5' card.  
+When you translate an amino acid, you must make sure that you are reading on the active strand, and in the correct direction. \\
+
+To produce a new protein, the rungs on the ladder are broken to pull apart the strands.
+Then the sequence of nucleotides is copied into a new chain of nucleotides, called mRNA.
+The mRNA is subsequently translated into protein.
+This game ignores the complexity of mRNA -- game play proceeds directly from DNA to protein.\\
+
+To create a protein, the nucleotide sequence is read 3 nucleotides at a time (by a large protein called a ribosome).
+Each possible sequence of 3 nucleotides represents an amino acid (except for 3 that mark the end of the protein), and these sequences of 3 nucleotides are called codons.
+%Think of codons as words that are 3 letters long and written in an alphabet of 4 letters.
+%That means there are $3^{4}=64$ different codons, but there are only 20 different amino acids (who we will meet in the next section).
+%Most amino acids, then, correspond to multiple codons. 
+%You may have heard people say "the genetic code is redundant", and this is what they mean by that. 
+As each codon is read, the amino acid that corresponds to the codon is fetched (by something called a tRNA), and the amino acid is is added into a new chain that will become the protein.
+It would be a very long game if we were to build any real proteins, so instead the game ends when all amino acids have been translated once.
+
+\subsection*{Biology Summary}
+\begin{itemize}
+    \item DNA is a chain of nucleotides: A C T G.
+    \item Nucleotides are read 3 at a time, and each sequence of 3 nucleotides (one codon) identifies an amino acid.
+    \item A protein is a chain of amino acids that have been translated from codons.
+\end{itemize}
+
+% no in frame
+
+
+\subsection*{Meet the amino acid family}
+
+Each of the 20 amino acids has a first name that corresponds to their 1 letter abbreviation.  
+Since some amino acids begin with the same letter, their first names may help you remember their abbreviations.
+Feel free to rename them if you think of better names! \\
+
+10 of the amino acids are hydrophilic (they love water), and the other 10 are hydrophobic (they run away from water). 
+A hydrophilic amino acid can only be translated when the water is ON, and vice versa for hydrophobic amino acids.  
+This is described further in the section \textbf{\nameref{trans}}.\\
+
+Each amino acid is a member of at least 1 group, according to its properties, such as whether it is acidic, aromatic, contains sulfur, and so forth.
+4 amino acids are members of 2 groups. 
+At the end of the game, you will score extra points for collecting amino acids that belong to the same group.
+
+\FloatBarrier
+\begin{table}[h!]
+\begin{tabular}{rcc}
+\hline
+\textbf{Group} & \textbf{Symbol} & \textbf{Amino Acids} \\
+\hline
+\namealiphatic{}  & \tikz[]{\node{\usebox{\aliphaticbox}};}  & 5 \\
+\namearomatic{}   & \tikz[]{\node{\usebox{\aromaticbox}};}   & 4 \\
+\namesmallpolar{} & \tikz[]{\node{\usebox{\smallpolarbox}};} & 4 \\
+\namebasic{}      & \tikz[]{\node{\usebox{\basicbox}};} & 3 \\
+\nameacidic{}     & \tikz[]{\node{\usebox{\acidicbox}};}     & 2 \\
+\nameacidderiv{}  & \tikz[]{\node{\usebox{\acidderivbox}};}  & 2 \\
+\namesulfur{}     & \tikz[]{\node{\usebox{\sulfurbox}};}     & 2 \\
+\nameunusual{}    & \tikz[]{\node{\usebox{\unusualbox}};}    & 2 \\
+\hline
+\end{tabular}
+\label{grouptable}
+\end{table}
+\FloatBarrier
+
+Since there are 20 amino acids and 3\textsuperscript{4}=64 different codons, some amino acids can be translated by more than one codon. 
+A larger number of codons means that there are more possible ways to translate an amino acid (the easier it is to make).
+3 amino acids have the largest number of codons at 6 each, and 2 amino acids can be translated by only 1 codon.
+How to translate amino acids is described in the section \textbf{\nameref{trans}}.
+
+\FloatBarrier
+\begin{table}[h!]
+\begin{tabular}{clllccclcl}
+\hline
+  &     & \textbf{First Name} & \textbf{Amino Acid} & \textbf{Codons} & \textbf{Hydrophobic} & \multicolumn{4}{c}{\textbf{Groups}} \\
+\hline
+A & Ala & Alan     & Alanine       & 4 &  \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\aliphaticbox}};} & Aliphatic   & \\
+R & Arg & Redbeard & Arginine      & 6 &   & \tikz[]{\node{\usebox{\basicbox}};} & Basic       & \\
+N & Asn & Nancy    & Asparagine    & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidderivbox}};}& Acid Deriv. & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar\\
+D & Asp & Devin    & Aspartate     & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidicbox}};}  & Acidic      & \\
+C & Cys & Cy       & Cysteine      & 2 &   & \tikz[]{\node{\usebox{\sulfurbox}};}  & Sulfur      & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar\\
+Q & Gln & Queen    & Glutamine     & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidderivbox}};} & Acid Deriv. & \\
+E & Glu & Edwin    & Glutamate     & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidicbox}};}  & Acidic      & \\
+G & Gly & Gladys   & Glycine       & 4 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\unusualbox}};} & Unusual     & \\
+H & His & Hillary  & Histidine     & 2 &   & \tikz[]{\node{\usebox{\aromaticbox}};}  & Aromatic    & \tikz[]{\node{\usebox{\basicbox}};} & Basic \\
+I & Ile & Isa      & Isoleucine    & 3 &   & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Aliphatic   & \\
+L & Leu & Lucy     & Leucine       & 6 &   & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Aliphatic   & \\
+K & Lys & King     & Lysine        & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\basicbox}};}  & Basic       & \\
+M & Met & Matt     & Methionine    & 1 &   & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Aliphatic   & \tikz[]{\node{\usebox{\sulfurbox}};}  & Sulfur \\
+F & Phe & Fred     & Phenylalanine & 2 &   & \tikz[]{\node{\usebox{\aromaticbox}};}  & Aromatic    & \\
+P & Pro & Paul     & Proline       & 4 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\unusualbox}};}  & Unusual     & \\
+S & Ser & Sarah    & Serine        & 6 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar & \\
+T & Thr & Thor     & Threonine     & 4 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar & \\
+W & Trp & Wendy    & Tryptophan    & 1 &   & \tikz[]{\node{\usebox{\aromaticbox}};}  & Aromatic    & \\
+Y & Tyr & Yvonne   & Tyrosine      & 2 &   & \tikz[]{\node{\usebox{\aromaticbox}};}  & Aromatic    & \\
+V & Val & Valerie  & Valine        & 4 &   & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Aliphatic   & \\
+\hline
+\end{tabular}
+%\caption[AA table]{The amino acids and their properties.}
+\label{aatable}
+\end{table}
+\FloatBarrier
+
+
+
+\subsection*{Nucleotides}
+
+\label{nucl}
+
+There are 4 colours for the nucleotides: dark red, dark blue, light red (pink) and light blue. 
+The colours of the nucleotides have been chosen so that there is similarity between the nucleotides of the same colours (red and blue) and between nucleotides of the same lightness (light and dark).
+
+\begin{tikzpicture}
+    \node (A) at ( 0, 6) {\usebox{\Anb}};
+    \node (G) at ( 5, 6) {\usebox{\Gnb}};
+    \node (R) at ( 8, 6) {\usebox{\Rnb}};
+    \node (T) at ( 0, 2) {\usebox{\Tnb}};
+    \node (C) at ( 5, 2) {\usebox{\Cnb}};
+    \node (Y) at ( 8, 2) {\usebox{\Ynb}};
+    \node (W) at ( 0, 0) {\usebox{\Wnb}};
+    \node (S) at ( 5, 0) {\usebox{\SSSnb}};
+    \node (N) at ( 8, 0) {\usebox{\Nnb}};
+    \node (H) at (11, 0) {\usebox{\HHnb}};
+
+    \path
+        (A) edge[mut] node {Transition}   (G)
+            edge[mut] node {Complement}   (T)
+            edge[mut] node {}             (C)
+        (G) edge[mut] node {Transversion} (T)
+            edge[mut] node {Complement}   (C)
+        (T) edge[mut] node {Transition}   (C)
+        ;
+
+    \path[use as bounding box] (-1,-1) rectangle (12,7);
+\end{tikzpicture}
+
+\begin{itemize}
+    \item R refers to the two blue colours, A and G, which are purines, and their molecules have two rings.
+    \item Y refers to the two red colours, T and C, which are pyrimidines, and their molecules have one aromatic ring.
+    \item W refers to the two dark colours, A and T, which form base pairs with two hydrogen bonds, a relatively weak bond.
+    \item S refers to the two light colours, G and C, which form base pairs with three hydrogen bonds, a relatively strong bond.
+    \item N refers to any of the nucleotides.
+    \item H refers to any nucleotide except G, and appears only in the codon for Isoleucine.
+\end{itemize}
+
+%\begin{tikzpicture}
+%    \node (B) at (0, 6) {\usebox{\Bnb}};
+%    \node (H) at (5, 6) {\usebox{\HHnb}};
+%    \node (V) at (0, 2) {\usebox{\Vnb}};
+%    \node (D) at (5, 2) {\usebox{\Dnb}};
+%\end{tikzpicture}
+
+\subsection*{Mutations}
+
+\begin{itemize}
+    \item Mutations that preserve lightness (ignoring colour) are called complements because they make a complementary pair (in the ladder analogy from the section \textbf{\nameref{bio}}, they are the rungs).  Rotate a nucleotide card 180 degrees to give the complement.
+    \item Mutations that preserve colour (ignoring lightness) are called transitions.  Flip a nucleotide card horizontally to perform a transition.
+    \item Mutations that preserve neither lightness nor colour are called transversions.  Flip a nucleotide card vertically to perform a transversion. \\
+\end{itemize}
+
+Mutation cards are available for each type of mutation (complement, transition and transversion), and additionally there is also a mutation card, which allows you to mutate a nucleotide to any other nucleotide. 
+
+
+\section*{Setup to begin the game}
+
+\begin{enumerate}
+    \item Give each player 1 Toggle Water card and 3 Extend cards.
+    \item Find the number of action cards that should be in the game by dividing the number of players by 2 (round up with odd numbers).  Sort the remaining action cards by type and lay out this many of each of type, arranged by cost.
+    \item Shuffle the amino acid cards, and deal 5 face up.  
+    \item Roll the die 5 times, and lay out a nucleotide sequence representing your dice rolls.  Put the 5' card at the beginning of this sequence.  You will always read the sequence from the 5' end to the (unmarked) 3' end, along the top of the nucleotide cards.  Place the rest of the nucleotides aside. 
+    \item Place the Water Level card in the playing area, and flip it so the water is ON.
+    \item Decide who goes first by some fair and balanced means.
+    \item Play proceeds clockwise around the table.\\
+\end{enumerate}
+
+\section*{Example Game Layout}
+\begin{tikzpicture}
+    %\draw[] (-0.5,-0.5) rectangle (15.5,6.5);
+
+    % aaback aa aa aa aa aa 
+
+    \node[inner sep=0pt] (aaback) at (0, 0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{aaback.pdf}}};
+
+    \node[inner sep=0pt, right=of aaback] (aa1) 
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{alanine.pdf}} };
+        
+    \node[inner sep=0pt, right=of aa1] (aa2) 
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{methionine.pdf}} };
+
+    \node[inner sep=0pt, right=of aa2] (aa3) 
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
+
+    \node[inner sep=0pt, right=of aa3] (aa4) 
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{lysine.pdf}} };
+
+    \node[inner sep=0pt, right=of aa4] (aa5) 
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{tryptophan.pdf}} };
+
+    \node[inner sep=0pt, right=of aa5] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateron.pdf}} };
+
+
+    % 5'-> nt nt nt nt nt
+
+    \node[inner sep=0pt, below=of aaback] (fiveprime)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, below=of aa1] (nt1)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, below=of aa2] (nt2)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, below=of aa3] (nt3)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, below=of aa4, rotate=180, anchor=south] (nt4)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, below=of aa5, rotate=180, anchor=south] (nt5)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+\end{tikzpicture}
+
+%\section*{Action Cards}
+%\begin{tikzpicture}
+%    % hand
+%
+%    % TODOv2 cards not transparent so stacks of them make sense
+%
+%    %\node[inner sep=0pt, below right=1cm of water] (togglewater)
+%        %{ \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{togglewater.pdf}} };
+%
+%    %\node[inner sep=0pt, below right=1.3cm of water] (extend)
+%        %{ \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{extend.pdf}} };
+%%
+%    %\node[inner sep=0pt, below right=1.6cm of water] (extend)
+%        %{ \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{extend.pdf}} };
+%
+%    %\node[inner sep=0pt, below right=1.9cm of water] (extend)
+%        %{ \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{extend.pdf}} };
+%
+%    
+%    % action cards
+%
+%    \node[inner sep=0pt, below=of fiveprime] (delete)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{delete.pdf}} };
+%
+%    
+%    \node[inner sep=0pt, below=of delete] (insert)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{insert.pdf}} };
+%
+%    \node[inner sep=0pt, right=of insert] (revcompseq)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{revcompseq.pdf}} };
+%
+%
+%    \node[inner sep=0pt, below=of insert] (complement)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{complement.pdf}} };
+%
+%    \node[inner sep=0pt, right=of complement] (transition)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{transition.pdf}} };
+%
+%    \node[inner sep=0pt, right=of transition] (transversion)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{transversion.pdf}} };
+%
+%
+%    \node[inner sep=0pt, below=of complement] (mutate)
+%        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{mutate.pdf}} };
+%
+%
+%\end{tikzpicture}
+%
+
+
+\section*{Taking a turn}
+
+On your turn, you have 5 action points available to you.
+If, at the start of your turn there are less than 3 nucleotides in the sequence, you will roll the die to fill it up to three as a free action.
+Then, you may take any of the following actions, as many times as you'd like, in any order -- given that you have enough points to do so.
+
+\begin{table}[h!]
+\begin{tabular}{cl}
+\hline
+\textbf{Points} & \textbf{Action}\\
+\hline
+    %1    & Roll the die to add a random nucleotide to the end of the nucleotide sequence.\\
+    1    & Translate any of the face up amino acids.\\
+    1-3  & Play a card from your hand.\\
+    2-5  & Select an available action card from the resource pile to gain this card's ability for subsequent rounds.\\
+\hline
+\end{tabular}
+%\caption[Turn table]{Actions that may be taken on your turn.}
+\label{turntable}
+\end{table}
+
+You may translate multiple amino acids in one turn, provided you have the points to do so.
+You may not save points from one round to the next.
+You must exhaust all of your points by the end of your turn, unless you have already used all the cards in your hand.
+
+\subsection*{Playing action cards}
+An action card may not be used in the same round it is purchased in; you must wait to use it until the following round to use it, but then it can also be used once in all subsequent rounds.
+If you have two action cards of the same type in your hand, you may play them both in one round, given that you have enough points to do so. 
+
+\begin{table}[h!]
+\begin{tabular}{lcccp{10cm}}
+\hline
+\textbf{Action Card} & \textbf{Buy} & \textbf{Use} & \textbf{Available} & \textbf{Result} \\
+\hline
+    Toggle Water                 & 0 & 1 & N & Flip the water card to toggle the hydrophobicity of amino acids that can be translated. \\
+    Extend                       & 0 & 1 & N*3 & Roll the die to select a nucleotide, and add it to the end of the nucleotide sequence.\\
+    Delete                       & 2 & 1 & N/2 & Delete one nucleotide from anywhere in the nucleotide sequence. \\
+    Insert                       & 3 & 1 & N/2 & Roll the die to select a nucleotide, then insert it anywhere in the nucleotide sequence. \\
+    %Complement sequence          & 3 & 1 & N/2 & Rotate all the cards in the nucleotide sequence 180 degrees. \\
+    Reverse Complement           & 3 & 1 & N/2 & Swap the 5' and 3' ends by moving the 5' card to the opposite end of the deck and rotating it so that the arrow points towards the nucleotide sequence.  The sequence will now be read in the opposite direction (reverse) on the opposite strand (complement) as the original sequence.  \\
+    %Polymerase Chain Reaction (PCR) & 3 & 1 & N/2 & Extend the nucleotide sequence with copies of itself until you run out of table space. \\
+    Complement                   & 3 & 2 & N/2 & Rotate any nucleotide in the nucleotide sequence 180 degrees to select its complement.  (Turn red colours into blue colours and vice versa.) \\
+    Transition                   & 3 & 2 & N/2 & Flip any nucleotide horizontally along its long axis to transition it. (Turn dark colours into light colours and vice versa.) \\
+    Transversion                 & 3 & 2 & N/2 & Flip any nucleotide vertically along its short axis to transversion it (Change both the colour and the lightness). \\
+    Mutate                       & 5 & 3 & N/2 & Rotate or flip one nucleotide as you choose. \\
+\hline
+\end{tabular}
+%\caption[Action cards]{Action cards.}
+\label{actiontable}
+\end{table}
+
+
+\subsection*{Translating amino acids}
+
+\label{trans}
+
+Three conditions must be satisfied to translate an amino acid:
+\begin{itemize}
+    \item \textbf{Codon match} The nucleotides in the nucleotide sequence must match the codon on the amino acid card that you want to translate.
+All but two of the amino acids can be translated by multiple codons, which differ only in the last nucleotide in the codon.
+The letters R, Y, N and H that occur in the third position each refer to at least two nucleotides, any of which can be used to translate the amino acid.  
+For example, R represents A and G, so an amino acid asking for GAR can be translated with either GAA or GAG.
+%R = A or G; Y = T or C; N = A or C or G or T; H = A or C or T.
+Three amino acids can be translated by six codons, which are shown in two blocks on the amino acid cards.
+Matching any of their codons is sufficient to translate the amino acid.
+
+    \item \textbf{Strand} The nucleotides must be in the correct order on the strand in the direction 5' to 3'. 
+The 5' end of the nucleotide sequence is the end marked by the 5' card. 
+Always read 5' to 3', and read along the strand indicated by the arrow on the 5' card.
+Any codons that are on the opposite strand, or in the opposite order are not available to be translated.
+
+    \item \textbf{Hydrophobicity} \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};}\!of the amino acid must match the water level.
+If the amino acid is hydrophilic (marked on the amino acid card by a water drop next to the one letter abbreviation) it can only be translated when the water is ON.
+Conversely, if the amino acid is hydrophobic (not shown on the card), it can only be translated when the water is OFF.
+The water level can only be changed by playing a Toggle Water card.\\
+\end{itemize}
+Note for biologists: In this game, you do not need to worry about the nucleotides being in frame. \\
+
+When an amino acid is translated, take the following actions:
+\begin{enumerate}
+    \item Remove the 3 nucleotides that made up the codon that was just translated, and return them to the nucleotide deck.
+    \item Collect the translated amino acid in your hand, to be scored at the end of the game.
+    \item Flip over a new amino acid card from the top of the face down deck.
+\end{enumerate}
+
+
+\clearpage
+
+\subsection*{\smiley \enskip Methionine is translated by ATG}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (met) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{methionine.pdf}} };
+
+    \node[inner sep=0pt, right= 2cm of met.east] (fiveprimemet)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=of fiveprimemet] (nt1met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt1met] (nt2met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt2met.north east, rotate=180, anchor=south east] (nt3met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt3met.south west, rotate=180, anchor=south east] (nt4met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=of nt4met.south west, anchor=north west] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
+
+\end{tikzpicture}
+
+\subsection*{\smiley \enskip Lysine is translated by AAA}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (lys) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{lysine.pdf}} };
+
+    \node[inner sep=0pt, right= 2cm of lys] (fiveprimelys)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=of fiveprimelys] (nt1lys)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt1lys] (nt2lys)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt2lys] (nt3lys)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt3lys] (nt4lys)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=of nt4lys] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateron.pdf}} };
+
+\end{tikzpicture}
+
+\subsection*{\smiley \enskip Leucine is translated by CTA}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (leu) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
+
+    \node[inner sep=0pt, right=2 cm of leu.north east, rotate=180, anchor=south east] (nt1leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt1leu.south west, anchor=north west] (nt2leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt2leu.north east, rotate=180, anchor=south east] (nt3leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt4leu.north east, rotate=180, anchor=south east] (fiveprimeleu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of fiveprimeleu.south west, anchor=north west] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
+
+\end{tikzpicture}
+
+\subsection*{\frownie \enskip Not translated: TTG is on the wrong strand}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (leu) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
+
+    \node[inner sep=0pt, right=2 cm of leu.north east, rotate=180, anchor=south east] (nt1leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt1leu.south west, rotate=180, anchor=south east] (nt2leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt2leu.south west, rotate=180, anchor=south east] (nt3leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt4leu.north east, rotate=180, anchor=south east] (fiveprimeleu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of fiveprimeleu.south west, anchor=north west] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
+
+\end{tikzpicture}\\
+To correct this, play a Reverse Complement card, then you will be able to translate Leucine with TTG.
+
+
+\subsection*{\frownie \enskip Not translated: TTG is on the right strand, but in the wrong order}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (leu) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
+
+    \node[inner sep=0pt, right=2 cm of leu.north east, anchor=north west] (fiveprimeleu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of fiveprimeleu.north east, rotate=180, anchor=south east] (nt1leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt1leu.south west, rotate=180, anchor=south east] (nt2leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt2leu.south west, rotate=180, anchor=south east] (nt3leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=1 cm of nt4leu.north east, anchor=north west] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
+
+\end{tikzpicture}\\
+To correct this, you could for example Complement the C to a G and then translate TTG.
+
+\subsection*{\frownie \enskip Not translated: hydrophobicity is incorrect}
+
+\begin{tikzpicture}
+
+    \node[inner sep=0pt] (met) at (0,0)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{methionine.pdf}} };
+
+    \node[inner sep=0pt, right= 2cm of met.east] (fiveprimemet)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
+
+    \node[inner sep=0pt, right=of fiveprimemet] (nt1met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt1met] (nt2met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt2met.north east, rotate=180, anchor=south east] (nt3met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+
+    \node[inner sep=0pt, right=of nt3met.south west, rotate=180, anchor=south east] (nt4met)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
+
+    \node[inner sep=0pt, right=of nt4met.south west, anchor=north west] (water)
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateron.pdf}} };
+
+
+\end{tikzpicture}\\
+To correct this, play a Toggle Water card first.
+
+\clearpage
+\section*{Ending the game}
+
+The game ends when the last amino acid has been translated.
+
+\subsection*{Scoring}
+
+Your final score is composed of two parts:
+\begin{itemize}
+    \item Score 1 point for each amino acid.
+    \item Score an additional 2 points for every pair of amino acids that are part of the same group.\\
+\end{itemize}
+
+% shoot the moon
+%If you have translated one amino acid from each group (min 8 cards), you will score 50 points total.
+
+The player with the most points wins!
+
+\label{groups}
+
+%Scoring Examples
+%\begin{itemize}
+%    \item If you have 2 amino acids in different groups, then you will score 2 points for translating the amino acids.
+%    \item If you have 2, 3, 4, 5 amino acids all in the same group, then you will score 2, 3, 4, 5 points for the amino acids, plus 2 points for each of 1, 3, 6, 10 pairs, for 4, 9, 16, 25 points total. \\
+%\end{itemize}
+
+\setlength{\tabcolsep}{3pt}
+
+\subsection*{Scoring Examples}
+\FloatBarrier
+\begin{table}[h!]
+\begin{tabular}{rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} c @{\hskip 18pt} c}
+\hline
+\multicolumn{10}{c}{\textbf{Amino Acids Collected}} & \textbf{Number of Pairs} & \textbf{Total Points} \\
+\hline
+\tikz[]{\node{\usebox{\unusualbox}};}  & Pro & \tikz[]{\node{\usebox{\unusualbox}};}  & Gly &&&&&&& 1 & 4\\
+\tikz[]{\node{\usebox{\acidicbox}};}  & Glu & \tikz[]{\node{\usebox{\acidicbox}};}  & Asp & \tikz[]{\node{\usebox{\basicbox}};}  & Lys & \tikz[]{\node{\usebox{\basicbox}};}  & Arg &&& 2 & 8\\
+\tikz[]{\node{\usebox{\basicbox}};}  & Lys  & \tikz[]{\node{\usebox{\basicbox}};}  & Arg & \tikz[]{\node{\usebox{\basicbox}};}  \tikz[]{\node{\usebox{\aromaticbox}};}  & His &&&&& 3 & 9\\
+\tikz[]{\node{\usebox{\basicbox}};}  & Lys & \tikz[]{\node{\usebox{\basicbox}};}  & Arg & \tikz[]{\node{\usebox{\basicbox}};}  \tikz[]{\node{\usebox{\aromaticbox}};}  & His & \tikz[]{\node{\usebox{\aromaticbox}};}  & Try &&& 4 & 12\\
+\tikz[]{\node{\usebox{\smallpolarbox}};}  & Ser & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Thr & \tikz[]{\node{\usebox{\acidderivbox}};} ~ \tikz[]{\node{\usebox{\smallpolarbox}};}  & Arg & \tikz[]{\node{\usebox{\sulfurbox}};}  ~ \tikz[]{\node{\usebox{\smallpolarbox}};}  & Cys &&& 6 & 16\\
+\tikz[]{\node{\usebox{\aliphaticbox}};}  & Ala & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Met & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Leu & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Ile & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Val & 10 & 25\\
+\hline
+\end{tabular}
+\label{pointstable}
+\end{table}
+\FloatBarrier
+
+
+%\section*{Variations}
+%
+%\subsection*{Shorter game}
+%Select only amino acids of certain classes.
+%
+%\subsection*{Simpler game}
+%Ignore hydrophobicity.
+%
+%\subsection*{Quiz time}
+%After the game, someone will be the quizmaster and will read out an amino acid name, and players must respond with the groups it is in; or first name -> amino acid, etc
+%
+%\subsection*{Make your own study cards}
+%Write your own facts on the cards, so that you can learn the properties that are meaningful for you.
+
+
+\section*{Acknowledgements}
+
+\textbf{Translation: The Amino Acid Card Game} was designed by Helen V Cook between 2012 and 2014.\\
+
+Many thanks to the many people who have contributed to this game in terms of playtesting and ideas.
+Special thanks to Saul Pwanson for the inspiration for the game, his critical eye throughout the design process, and his encouragement.\\
+
+Additionally, many thanks to the \TeX{} community at StackExchange for having already answered my questions before I thought to ask them. \\
+
+The cards and instructions for Translation: The Amino Acid Card Game were typeset in \textrm{\LaTeX} using the packages tikz and chemfig, and the fonts \widefont PTSansCaption \narrowfont and PTSansNarrow. 
+
+\section*{Version}
+
+This is version 1.0, released August 7\textsuperscript{th} 2014.  
+
+
+\section*{License}
+
+Translation: The Amino Acid Card Game is licensed under \cc Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+(http://creativecommons.org/licenses/by-sa/4.0/).
+If you adapt this work, I would love to hear from you!
+
+
+\section*{Connect}
+
+Visit http://aminoacidcardgame.com for:
+
+\begin{itemize}
+    \item Expansion sets
+    \item Game variants
+    \item PDFs of the cards and instructions
+    \item Full listing of credits
+\end{itemize}
+
+
+
+\end{document}
