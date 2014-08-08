@@ -1,7 +1,8 @@
 
-% TODO order dice
-% TODO get new quote
+% TODO get new quote for cards
 % TODOv2 change unusual symbol
+
+% TODO draw flip on reference card
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Generate the cards
@@ -43,7 +44,7 @@
             (leftlevel) to [out=30, in=285] (firstpeak) to [out=315, in=225] (secondpeak) to [out=255, in=315] (rightlevel)
             to [out=270, in=90] (stock page.south east);
 
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Water ON};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Water ON}};
 
         \matrix (mat) [yshift=-1cm, matrix of nodes, column sep=1cm, row sep=0.2cm] at (trimmed page.center) {
             \phantom{Ag} \scalefont{1.4}{Arginine} & \scalefont{1.4}{Asparagine} \phantom{Ag}\\
@@ -74,7 +75,7 @@
 
 
 
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Water OFF};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Water OFF}};
         \matrix (matt) [matrix of nodes, column sep=1cm, row sep=0.2cm] at (trimmed page.center) {
             \phantom{Ag} \scalefont{1.4}{Alanine} & \scalefont{1.4}{Cysteine} \phantom{Ag}\\
             \phantom{Ag} \scalefont{1.4}{Histidine} & \scalefont{1.4}{Isoleucine} \phantom{Ag}\\
@@ -92,8 +93,8 @@
     \fiveprime{}
     %\threeprime{}
 
-    %\referencent{}
-    %\referencemutation{}
+    \referencent{}
+    \referencemutation{}
     %\referencegroups{}
 
     %\turnsummaryfront{}

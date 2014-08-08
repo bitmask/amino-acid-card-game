@@ -49,9 +49,20 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
 
 \tikzstyle{base}=[remember picture, inner sep=0pt, outer sep=0pt]
 \tikzstyle{card}=[remember picture, inner sep=0pt, outer sep=0pt, overlay]
+
+\tikzset{
+    % Define arrow style
+    mut/.style={
+           latex-latex,
+           line width=2pt,
+           color=lightgrey,
+           text=black,
+           }
+}
 
 
 % with bleed to use on the aa cards
@@ -62,7 +73,7 @@
     \widefont \Huge
         \draw [black, fill=A] (0,0) rectangle (1 + 0.4,1);
         \draw [black, fill=black] (1 + 0.4,0) rectangle (2 + 0.4,1);
-        \node [,white] at (1.5 + 0.4,0.5) {A};
+        \node [,white] at (1.5 + 0.4,0.5) {\textbf A};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -73,7 +84,7 @@
     \widefont \Huge
         \draw [black, fill=T] (0,0) rectangle (1 + 0.4,1);
         \draw [black, fill=black] (1 + 0.4,0) rectangle (2 + 0.4,1);
-        \node [,white] at (1.5 + 0.4,0.5) {T};
+        \node [,white] at (1.5 + 0.4,0.5) {\textbf T};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -84,7 +95,7 @@
     \widefont \Huge
         \draw [black, fill=U] (0,0) rectangle (1 + 0.4,1);
         \draw [black, fill=black] (1 + 0.4,0) rectangle (2 + 0.4,1);
-        \node [,white] at (1.5 + 0.4,0.5) {U};
+        \node [,white] at (1.5 + 0.4,0.5) {\textbf U};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -95,7 +106,7 @@
     \widefont \Huge
         \draw [black, fill=C] (0,0) rectangle (1 + 0.4,1);
         \draw [black, fill=white] (1 + 0.4,0) rectangle (2 + 0.4,1);
-        \node [,black] at (1.5 + 0.4,0.5) {C};
+        \node [,black] at (1.5 + 0.4,0.5) {\textbf C};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -106,7 +117,7 @@
     \widefont \Huge
         \draw [black, fill=G] (0,0) rectangle (1 + 0.4,1);
         \draw [black, fill=white] (1 + 0.4,0) rectangle (2 + 0.4,1);
-        \node [,black] at (1.5 + 0.4,0.5) {G};
+        \node [,black] at (1.5 + 0.4,0.5) {\textbf G};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -118,7 +129,7 @@
         \draw [black, fill=G] (0,0) rectangle (1 + 0.4, 0.5);
         \draw [black, fill=A] (0,0.5) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {R};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf R};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -130,7 +141,7 @@
         \draw [black, fill=C] (0,0) rectangle (1 + 0.4, 0.5);
         \draw [black, fill=U] (0,0.5) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {Y};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf Y};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -143,7 +154,7 @@
         \draw [black, fill=U] (0,0.3333) rectangle (1 + 0.4, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {H};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf H};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -156,7 +167,7 @@
         \draw [black, fill=U] (0,0.3333) rectangle (1 + 0.4, 0.6666);
         \draw [black, fill=G] (0,0.6666) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {B};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf B};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -169,7 +180,7 @@
         \draw [black, fill=G] (0,0.3333) rectangle (1 + 0.4, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {V};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf V};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -182,7 +193,7 @@
         \draw [black, fill=U] (0,0.3333) rectangle (1 + 0.4, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {D};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf D};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -194,7 +205,7 @@
         \draw [black, fill=U] (0,0) rectangle (1 + 0.4, 0.5);
         \draw [black, fill=A] (0,0.5) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {W};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf W};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -206,7 +217,7 @@
         \draw [black, fill=C] (0,0) rectangle (1 + 0.4, 0.5);
         \draw [black, fill=G] (0,0.5) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {S};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf S};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -220,7 +231,7 @@
         \draw [black, fill=G] (0,0.5) rectangle (1 + 0.4, 0.75);
         \draw [black, fill=A] (0,0.75) rectangle (1 + 0.4, 1);
         \draw [black, fill=lightgrey] (1 + 0.4,0) rectangle (2 + 0.4, 1);
-        \node [,darkgrey] at (1.5 + 0.4,0.5) {N};
+        \node [,darkgrey] at (1.5 + 0.4,0.5) {\textbf N};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1);
     \end{tikzpicture}
 }
@@ -234,7 +245,7 @@
     \widefont \Huge
         \draw [black, fill=darkgrey] (0,0) rectangle (1,1);
         \draw [black, fill=black] (1,0) rectangle (2,1);
-        \node [,white] at (1.5,0.5) {A};
+        \node [,white] at (1.5,0.5) {\textbf A};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -245,7 +256,7 @@
     \widefont \Huge
         \draw [black, fill=darkgrey] (0,0) rectangle (1,1);
         \draw [black, fill=black] (1,0) rectangle (2,1);
-        \node [,white] at (1.5,0.5) {T};
+        \node [,white] at (1.5,0.5) {\textbf T};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -256,7 +267,7 @@
     \widefont \Huge
         \draw [black, fill=lightgrey] (0,0) rectangle (1,1);
         \draw [black, fill=white] (1,0) rectangle (2,1);
-        \node [,black] at (1.5,0.5) {C};
+        \node [,black] at (1.5,0.5) {\textbf C};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -267,7 +278,7 @@
     \widefont \Huge
         \draw [black, fill=lightgrey] (0,0) rectangle (1,1);
         \draw [black, fill=white] (1,0) rectangle (2,1);
-        \node [,black] at (1.5,0.5) {G};
+        \node [,black] at (1.5,0.5) {\textbf G};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -282,7 +293,7 @@
     \widefont \Huge
         \draw [black, fill=A] (0,0) rectangle (1 + 0.4 ,1 + 0.4);
         \draw [black, fill=black] (1 + 0.4,0) rectangle (2 + 0.4,1 + 0.4);
-        \node [,white] at (1.5 + 0.4 ,0.5) {A};
+        \node [,white] at (1.5 + 0.4 ,0.5) {\textbf A};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1 + 0.4);
     \end{tikzpicture}
 }
@@ -293,7 +304,7 @@
     \widefont \Huge
         \draw [black, fill=T] (0,0) rectangle (1 + 0.4,1 + 0.4);
         \draw [black, fill=black] (1 + 0.4,0) rectangle (2 + 0.4,1 + 0.4);
-        \node [,white] at (1.5 + 0.4,0.5) {T};
+        \node [,white] at (1.5 + 0.4,0.5) {\textbf T};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1 + 0.4);
     \end{tikzpicture}
 }
@@ -304,7 +315,7 @@
     \widefont \Huge
         \draw [black, fill=C] (0,0) rectangle (1 + 0.4,1 + 0.4);
         \draw [black, fill=white] (1 + 0.4,0) rectangle (2 + 0.4,1 + 0.4);
-        \node [,black] at (1.5 + 0.4,0.5) {C};
+        \node [,black] at (1.5 + 0.4,0.5) {\textbf C};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1 + 0.4);
     \end{tikzpicture}
 }
@@ -315,7 +326,7 @@
     \widefont \Huge
         \draw [black, fill=G] (0,0) rectangle (1 + 0.4,1 + 0.4);
         \draw [black, fill=white] (1 + 0.4,0) rectangle (2 + 0.4,1 + 0.4);
-        \node [,black] at (1.5 + 0.4,0.5) {G};
+        \node [,black] at (1.5 + 0.4,0.5) {\textbf G};
         \path [use as bounding box] (0,0) rectangle (2 + 0.4,1 + 0.4);
     \end{tikzpicture}
 }
@@ -329,7 +340,7 @@
     \widefont \Huge
         \draw [black, fill=A] (0,0) rectangle (1,1);
         \draw [black, fill=black] (1,0) rectangle (2,1);
-        \node [,white] at (1.5,0.5) {A};
+        \node [,white] at (1.5,0.5) {\textbf A};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -340,7 +351,7 @@
     \widefont \Huge
         \draw [black, fill=T] (0,0) rectangle (1,1);
         \draw [black, fill=black] (1,0) rectangle (2,1);
-        \node [,white] at (1.5,0.5) {T};
+        \node [,white] at (1.5,0.5) {\textbf T};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -351,7 +362,7 @@
     \widefont \Huge
         \draw [black, fill=U] (0,0) rectangle (1,1);
         \draw [black, fill=black] (1,0) rectangle (2,1);
-        \node [,white] at (1.5,0.5) {U};
+        \node [,white] at (1.5,0.5) {\textbf U};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -362,7 +373,7 @@
     \widefont \Huge
         \draw [black, fill=C] (0,0) rectangle (1,1);
         \draw [black, fill=white] (1,0) rectangle (2,1);
-        \node [,black] at (1.5,0.5) {C};
+        \node [,black] at (1.5,0.5) {\textbf C};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -373,7 +384,7 @@
     \widefont \Huge
         \draw [black, fill=G] (0,0) rectangle (1,1);
         \draw [black, fill=white] (1,0) rectangle (2,1);
-        \node [,black] at (1.5,0.5) {G};
+        \node [,black] at (1.5,0.5) {\textbf G};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -385,7 +396,7 @@
         \draw [black, fill=G] (0,0) rectangle (1, 0.5);
         \draw [black, fill=A] (0,0.5) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {R};
+        \node [,darkgrey] at (1.5,0.5) {\textbf R};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -397,7 +408,7 @@
         \draw [black, fill=C] (0,0) rectangle (1, 0.5);
         \draw [black, fill=U] (0,0.5) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {Y};
+        \node [,darkgrey] at (1.5,0.5) {\textbf Y};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -410,7 +421,7 @@
         \draw [black, fill=U] (0,0.3333) rectangle (1, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {H};
+        \node [,darkgrey] at (1.5,0.5) {\textbf H};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -423,7 +434,7 @@
         \draw [black, fill=U] (0,0.3333) rectangle (1, 0.6666);
         \draw [black, fill=G] (0,0.6666) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {B};
+        \node [,darkgrey] at (1.5,0.5) {\textbf B};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -436,20 +447,20 @@
         \draw [black, fill=G] (0,0.3333) rectangle (1, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {V};
+        \node [,darkgrey] at (1.5,0.5) {\textbf V};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
 
 \newsavebox{\Dnb}
-\savebox{\Dnb}{
+\savebox{\Dnb}{%
     \begin{tikzpicture}[base]
     \widefont \Huge
         \draw [black, fill=G] (0,0) rectangle (1, 0.3333);
         \draw [black, fill=U] (0,0.3333) rectangle (1, 0.6666);
         \draw [black, fill=A] (0,0.6666) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {D};
+        \node [,darkgrey] at (1.5,0.5) {\textbf D};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -461,7 +472,7 @@
         \draw [black, fill=U] (0,0) rectangle (1, 0.5);
         \draw [black, fill=A] (0,0.5) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {W};
+        \node [,darkgrey] at (1.5,0.5) {\textbf W};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -473,7 +484,31 @@
         \draw [black, fill=C] (0,0) rectangle (1, 0.5);
         \draw [black, fill=G] (0,0.5) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {S};
+        \node [,darkgrey] at (1.5,0.5) {\textbf S};
+        \path [use as bounding box] (0,0) rectangle (2,1);
+    \end{tikzpicture}
+}
+
+\newsavebox{\Knb}
+\savebox{\Knb}{%
+    \begin{tikzpicture}[base]
+    \widefont \Huge
+        \draw [black, fill=T] (0,0) rectangle (1, 0.5);
+        \draw [black, fill=G] (0,0.5) rectangle (1, 1);
+        \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
+        \node [,darkgrey] at (1.5,0.5) {\textbf K};
+        \path [use as bounding box] (0,0) rectangle (2,1);
+    \end{tikzpicture}
+}
+
+\newsavebox{\Mnb}
+\savebox{\Mnb}{%
+    \begin{tikzpicture}[base]
+    \widefont \Huge
+        \draw [black, fill=A] (0,0) rectangle (1, 0.5);
+        \draw [black, fill=C] (0,0.5) rectangle (1, 1);
+        \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
+        \node [,darkgrey] at (1.5,0.5) {\textbf M};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -487,7 +522,7 @@
         \draw [black, fill=G] (0,0.5) rectangle (1, 0.75);
         \draw [black, fill=A] (0,0.75) rectangle (1, 1);
         \draw [black, fill=lightgrey] (1,0) rectangle (2, 1);
-        \node [,darkgrey] at (1.5,0.5) {N};
+        \node [,darkgrey] at (1.5,0.5) {\textbf N};
         \path [use as bounding box] (0,0) rectangle (2,1);
     \end{tikzpicture}
 }
@@ -869,7 +904,7 @@
 
 
         % name
-        \node[anchor = north east, xshift=-0.25cm, yshift=-0.25cm] (name) at (trimmed page.north east) { \narrowfont\Huge\sffamily #3 };
+        \node[anchor = north east, xshift=-0.25cm, yshift=-0.25cm] (name) at (trimmed page.north east) { \narrowfont\Huge\sffamily \textbf{#3} };
 
 
         % codon(s)
@@ -985,17 +1020,54 @@
 
 \newcommand{\referencent} {
     \begin{tikzpicture}[card]
-        \node at (trimmed page.center) {placeholder reference nt};
+        \node (C) [anchor=south, inner sep=2mm, label=below:{Cytosine}, yshift=-5mm] at (trimmed page.center) {\usebox{\Cnb}};
+        \node (T) [inner sep=2mm, left= -0.1cm of C, label=below:{Thymine}] {\usebox{\Tnb}};
+        \node (Y) [inner sep=2mm, right= -0.1cm of C, label=below:{Pyrimidine}] {\usebox{\Ynb}};
+
+        \node (G) [inner sep=2mm, above= 0.5cm of C, label=below:{Guanine}] {\usebox{\Gnb}};
+        \node (A) [inner sep=2mm, above= 0.5cm of T, label=below:{Adenine}] {\usebox{\Anb}};
+        \node (R) [inner sep=2mm, above= 0.5cm of Y, label=below:{Purine}] {\usebox{\Rnb}};
+
+        \node (S) [inner sep=2mm, above= 0.5cm of G, label=below:{Strong}] {\usebox{\SSSnb}};
+        \node (W) [inner sep=2mm, above= 0.5cm of A, label=below:{Weak}] {\usebox{\Wnb}};
+        \node (K) [inner sep=2mm, above= 0.5cm of R, label=below:{Keto}] {\usebox{\Knb}};
+
+        \node (H) [inner sep=2mm, below= 0.5cm of C, label=below:{Not G}] {\usebox{\HHnb}};
+        \node (B) [inner sep=2mm, below= 0.5cm of T, label=below:{Not A}] {\usebox{\Bnb}};
+        \node (M) [inner sep=2mm, below= 0.5cm of Y, label=below:{Amino}] {\usebox{\Mnb}};
+
+        \node (D) [inner sep=2mm, below= 0.5cm of H, label=below:{Not C}] {\usebox{\Dnb}};
+        \node (V) [inner sep=2mm, below= 0.5cm of B, label=below:{Not T}] {\usebox{\Vnb}};
+        \node (N) [inner sep=2mm, below= 0.5cm of M, label=below:{Any}] {\usebox{\Nnb}};
+
     \end{tikzpicture}    
     \clearpage
 }
 
 \newcommand{\referencemutation} {
     \begin{tikzpicture}[card]
-        \node at (trimmed page.center) {placeholder reference mut};
+        \node (G) [rotate=90, anchor=north east, xshift=-1.0cm, yshift=-0.5cm] at (trimmed page.north west) {\usebox{\Gnb}};
+        \node (C) [rotate=90, anchor=south east, xshift=-1.0cm, yshift=0.5cm] at (trimmed page.north east) {\usebox{\Cnb}};
+        \node (A) [rotate=90, anchor=north west, xshift=1.0cm, yshift=-0.5cm] at (trimmed page.south west) {\usebox{\Anb}};
+        \node (T) [rotate=90, anchor=south west, xshift=1.0cm, yshift=0.5cm] at (trimmed page.south east) {\usebox{\Tnb}};
+
+    \path
+        (A) edge[mut, sloped] node {Transition}   (G)
+            edge[mut] node {}             (C)
+        (G) edge[mut] node {} (T)
+        (T) edge[mut, sloped] node {Transition}   (C)
+            edge[mut] node {}   (A)
+        (C) edge[mut] node {}   (G)
+        ;
+
+        \node [rotate=90, anchor=center] at ($(A)!0.5!(T)$) {Complement};
+        \node [rotate=90, anchor=center] at ($(G)!0.5!(C)$) {Complement};
+        \node [rotate=90, anchor=center] at ($(T)!0.5!(G)$) {Transversion};
+
     \end{tikzpicture}    
     \clearpage
 }
+
 
 \newcommand{\referencegroups} {
     \begin{tikzpicture}[card]
@@ -1036,7 +1108,7 @@
 
 \newcommand{\togglewater} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Toggle Water ON/OFF};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Toggle Water ON/OFF}};
         \node[below = 3cm, text width=5cm] at (trimmed page.center) {Turn the water on or off. };
 
         \node (leftlevel)   [yshift=-5.0cm]               at (stock page.north west) {};
@@ -1059,7 +1131,7 @@
 
 \newcommand{\insertcard} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Insert };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Insert} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
@@ -1076,14 +1148,14 @@
 
 \newcommand{\extend} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Extend };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Extend} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
         \node [above = 1.5cm of firstbot] (firsttop)  {\usebox{\Anb}};
         \node [above = 1.5cm of secondbot] (secondtop) {\usebox{\Gnb}};
 
-        \node [below = 3.0cm, text width=3cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the die to insert a random nucleotide at the end of the sequence.};
+        \node [below = 3.0cm, text width=3cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the die to insert a random nucleotide at the end of the sequence.  May be used multiple times in one round.};
 
         \node (buypts) [anchor=north east, xshift=-0.25cm, yshift=-0.25cm] at (trimmed page.north east) {Buy: \Huge 0 \normalsize};
         \node (usepts) [below=0.25cm of buypts] {Use: \Huge 1 \normalsize};
@@ -1093,7 +1165,7 @@
 
 \newcommand{\delete} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Delete };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Delete} };
 
         \node [below left = 0 cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tgrey}};
         \node [below right = 0 cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cgrey}};
@@ -1110,7 +1182,7 @@
 
 \newcommand{\mutate} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Mutate };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Mutate} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
@@ -1135,7 +1207,7 @@
 
 \newcommand{\revcompseq} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Reverse Complement};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Reverse Complement}};
 
         \node (fiveprime) [above left=1.0cm and 1.5cm of trimmed page.center] {\scalefont{3}{5'}};
         \node (threeprime) [above right=1.0cm and 1.5cm of trimmed page.center, text=grey] {\scalefont{3}{3'}};
@@ -1152,7 +1224,7 @@
 
 \newcommand{\transversion} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Transversion };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Transversion} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
@@ -1175,7 +1247,7 @@
 
 \newcommand{\transition} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Transition };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Transition} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
@@ -1199,7 +1271,7 @@
 
 \newcommand{\complement} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Complement };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Complement} };
 
         \node [below left = 0cm and 0.75cm of trimmed page.center](firstbot) {\usebox{\Tnb}};
         \node [below right = 0cm and 0.75cm of trimmed page.center](secondbot) {\usebox{\Cnb}};
@@ -1220,7 +1292,7 @@
 
 \newcommand{\compseq} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Complement Sequence };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Complement Sequence} };
         \node[below = 3cm, text width=5cm] at (trimmed page.center) {Rotate every nucleotide in the sequence by 180 degrees. };
     \end{tikzpicture}    
     \clearpage
@@ -1228,7 +1300,7 @@
 
 \newcommand{\pcr} {
     \begin{tikzpicture}[card]
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Polymerase Chain Reaction };
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Polymerase Chain Reaction} };
         %picture pcr
         \node[below = 3cm, text width=5cm] at (trimmed page.center) {Extend the nucleotide sequence with copies of itself until you run out of table space. };
         \node (buypts) [anchor=north east, xshift=-0.25cm, yshift=-0.25cm] at (trimmed page.north east) {Buy: \Huge 3 \normalsize};

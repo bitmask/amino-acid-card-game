@@ -46,16 +46,6 @@
 
 
 
-\usetikzlibrary{arrows,positioning} 
-\tikzset{
-    % Define arrow style
-    mut/.style={
-           latex-latex,
-           line width=2pt,
-           color=lightgrey,
-           text=black,
-           }
-}
 
 
 
@@ -73,8 +63,7 @@
 \section*{Who should play?}
 
 \begin{itemize}
-    \item Number of players: 2-6
-    % TODO how many players
+    \item Number of players: 2-4
     \item Ages: 12 and up
 \end{itemize}
 
@@ -95,7 +84,7 @@ The game is composed of the following parts.
 \begin{itemize}
     \item 20 amino acid cards
     \item 20 nucleotide cards
-    \item 48 action cards, of 9 different types
+    \item 22 action cards, of 9 different types
     % 6 toggle water
     % 6*3 = 18 extend
     % 6/2 = 3 delete
@@ -109,7 +98,7 @@ The game is composed of the following parts.
     \item 1 card to mark the 5' end
     %\item 6 turn summary cards
     %\item 1 nucleotide and mutation summary card
-    \item 1 4-sided die with A, C, T, G on each side
+    \item 1 4-sided die with A, C, T, G on each side % TODO fix dice
     \item These instructions
 \end{itemize}
 
@@ -240,18 +229,25 @@ V & Val & Valerie  & Valine        & 4 &   & \tikz[]{\node{\usebox{\aliphaticbox
 
 There are 4 colours for the nucleotides: dark red, dark blue, light red (pink) and light blue. 
 The colours of the nucleotides have been chosen so that there is similarity between the nucleotides of the same colours (red and blue) and between nucleotides of the same lightness (light and dark).
+Abbreviations for groups of nucleotides are shown in the following diagram.
+Only those within the grey box are used in the codons for the amino acids.
 
 \begin{tikzpicture}
-    \node (A) at ( 0, 6) {\usebox{\Anb}};
-    \node (G) at ( 5, 6) {\usebox{\Gnb}};
+    \node (G) at ( 0, 6) {\usebox{\Gnb}};
+    \node (A) at ( 5, 6) {\usebox{\Anb}};
     \node (R) at ( 8, 6) {\usebox{\Rnb}};
-    \node (T) at ( 0, 2) {\usebox{\Tnb}};
-    \node (C) at ( 5, 2) {\usebox{\Cnb}};
+    \node (H) at (11, 6) {\usebox{\HHnb}};
+    \node (B) at (14, 6) {\usebox{\Bnb}};
+    \node (C) at ( 0, 2) {\usebox{\Cnb}};
+    \node (T) at ( 5, 2) {\usebox{\Tnb}};
     \node (Y) at ( 8, 2) {\usebox{\Ynb}};
-    \node (W) at ( 0, 0) {\usebox{\Wnb}};
-    \node (S) at ( 5, 0) {\usebox{\SSSnb}};
+    \node (D) at (11, 2) {\usebox{\Dnb}};
+    \node (V) at (14, 2) {\usebox{\Vnb}};
+    \node (S) at ( 0, 0) {\usebox{\SSSnb}};
+    \node (W) at ( 5, 0) {\usebox{\Wnb}};
     \node (N) at ( 8, 0) {\usebox{\Nnb}};
-    \node (H) at (11, 0) {\usebox{\HHnb}};
+    \node (M) at (11, 0) {\usebox{\Mnb}};
+    \node (K) at (14, 0) {\usebox{\Knb}};
 
     \path
         (A) edge[mut] node {Transition}   (G)
@@ -262,16 +258,19 @@ The colours of the nucleotides have been chosen so that there is similarity betw
         (T) edge[mut] node {Transition}   (C)
         ;
 
-    \path[use as bounding box] (-1,-1) rectangle (12,7);
+    \draw [lightgrey, line width=2pt] (-1.5,1.0) -- (6.5,1) -- (6.5, -1.0) -- (9.5, -1,0) -- (9.5, 5.0) -- (12.5, 5,0) -- (12.5, 7.0) -- (-1.5, 7.0) -- cycle;
+    \path[use as bounding box] (-1.5,-1.5) rectangle (16,7.5);
 \end{tikzpicture}
 
 \begin{itemize}
-    \item R refers to the two blue colours, A and G, which are purines, and their molecules have two rings.
-    \item Y refers to the two red colours, T and C, which are pyrimidines, and their molecules have one aromatic ring.
-    \item W refers to the two dark colours, A and T, which form base pairs with two hydrogen bonds, a relatively weak bond.
-    \item S refers to the two light colours, G and C, which form base pairs with three hydrogen bonds, a relatively strong bond.
-    \item N refers to any of the nucleotides.
-    \item H refers to any nucleotide except G, and appears only in the codon for Isoleucine.
+    \item R (puRine) refers to the two blue colours, A and G, which are purines, and their molecules have two rings.
+    \item Y (pYrimidine) refers to the two red colours, T and C, which are pyrimidines, and their molecules have one aromatic ring.
+    \item N (aNy) refers to any of the nucleotides.
+    \item B, H, V and D refer to any nucleotide except A, G, T and C respectively.  Only H is used in the game, and it appears in the codon for Isoleucine.
+    \item W (Weak) refers to the two dark colours, A and T, which form base pairs with two hydrogen bonds, a relatively weak bond.
+    \item S (Strong) refers to the two light colours, G and C, which form base pairs with three hydrogen bonds, a relatively strong bond.
+    \item M (aMino) refers to A and C.
+    \item K (Keto) refers to G and T.
 \end{itemize}
 
 %\begin{tikzpicture}
@@ -298,7 +297,7 @@ Mutation cards are available for each type of mutation (complement, transition a
     \item Give each player 1 Toggle Water card and 3 Extend cards.
     \item Find the number of action cards that should be in the game by dividing the number of players by 2 (round up with odd numbers).  Sort the remaining action cards by type and lay out this many of each of type, arranged by cost.
     \item Shuffle the amino acid cards, and deal 5 face up.  
-    \item Roll the die 5 times, and lay out a nucleotide sequence representing your dice rolls.  Put the 5' card at the beginning of this sequence.  You will always read the sequence from the 5' end to the (unmarked) 3' end, along the top of the nucleotide cards.  Place the rest of the nucleotides aside. 
+    \item Roll the die 5 times, and lay out a nucleotide sequence representing your dice rolls.  Put the 5' card at the beginning of this sequence.  You will always read the sequence from the 5' end to the (unmarked) 3' end, following the arrow indicated on the 5' card.  Place the rest of the nucleotides aside. 
     \item Place the Water Level card in the playing area, and flip it so the water is ON.
     \item Decide who goes first by some fair and balanced means.
     \item Play proceeds clockwise around the table.\\
@@ -407,7 +406,7 @@ Mutation cards are available for each type of mutation (complement, transition a
 \section*{Taking a turn}
 
 On your turn, you have 5 action points available to you.
-If, at the start of your turn there are less than 3 nucleotides in the sequence, you will roll the die to fill it up to three as a free action.
+If there are less than 4 nucleotides in the sequence at the start of your turn, then roll the die to fill it up to four as a free action.
 Then, you may take any of the following actions, as many times as you'd like, in any order -- given that you have enough points to do so.
 
 \begin{table}[h!]
@@ -427,10 +426,12 @@ Then, you may take any of the following actions, as many times as you'd like, in
 
 You may translate multiple amino acids in one turn, provided you have the points to do so.
 You may not save points from one round to the next.
-You must exhaust all of your points by the end of your turn, unless you have already used all the cards in your hand.
+You must exhaust all your points by the end of your turn -- perhaps by extending the sequence multiple times.
 
 \subsection*{Playing action cards}
 An action card may not be used in the same round it is purchased in; you must wait to use it until the following round to use it, but then it can also be used once in all subsequent rounds.
+Once an action card has been used, it cannot be used again in the same round.
+The one exception to this rule is the Extend card, which can be used multiple times in the same round, each time for a cost of 1 point.
 If you have two action cards of the same type in your hand, you may play them both in one round, given that you have enough points to do so. 
 
 \begin{table}[h!]
@@ -439,7 +440,7 @@ If you have two action cards of the same type in your hand, you may play them bo
 \textbf{Action Card} & \textbf{Buy} & \textbf{Use} & \textbf{Available} & \textbf{Result} \\
 \hline
     Toggle Water                 & 0 & 1 & N & Flip the water card to toggle the hydrophobicity of amino acids that can be translated. \\
-    Extend                       & 0 & 1 & N*3 & Roll the die to select a nucleotide, and add it to the end of the nucleotide sequence.\\
+    Extend                       & 0 & 1 & N & Roll the die to select a nucleotide, and add it to the end of the nucleotide sequence. May be used multiple times in one round.\\
     Delete                       & 2 & 1 & N/2 & Delete one nucleotide from anywhere in the nucleotide sequence. \\
     Insert                       & 3 & 1 & N/2 & Roll the die to select a nucleotide, then insert it anywhere in the nucleotide sequence. \\
     %Complement sequence          & 3 & 1 & N/2 & Rotate all the cards in the nucleotide sequence 180 degrees. \\
@@ -470,7 +471,7 @@ For example, R represents A and G, so an amino acid asking for GAR can be transl
 Three amino acids can be translated by six codons, which are shown in two blocks on the amino acid cards.
 Matching any of their codons is sufficient to translate the amino acid.
 
-    \item \textbf{Strand} The nucleotides must be in the correct order on the strand in the direction 5' to 3'. 
+    \item \textbf{Strand} The nucleotides must be in the correct order in the 5' direction. 
 The 5' end of the nucleotide sequence is the end marked by the 5' card. 
 Always read 5' to 3', and read along the strand indicated by the arrow on the 5' card.
 Any codons that are on the opposite strand, or in the opposite order are not available to be translated.
@@ -484,7 +485,7 @@ Note for biologists: In this game, you do not need to worry about the nucleotide
 
 When an amino acid is translated, take the following actions:
 \begin{enumerate}
-    \item Remove the 3 nucleotides that made up the codon that was just translated, and return them to the nucleotide deck.
+    %\item Remove the 3 nucleotides that made up the codon that was just translated, and return them to the nucleotide deck.
     \item Collect the translated amino acid in your hand, to be scored at the end of the game.
     \item Flip over a new amino acid card from the top of the face down deck.
 \end{enumerate}
@@ -546,7 +547,7 @@ When an amino acid is translated, take the following actions:
 
 \end{tikzpicture}
 
-\subsection*{\smiley \enskip Leucine is translated by CTA}
+\subsection*{\smiley \enskip Leucine is translated by CTC}
 
 \begin{tikzpicture}
 
@@ -554,7 +555,7 @@ When an amino acid is translated, take the following actions:
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
 
     \node[inner sep=0pt, right=2 cm of leu.north east, rotate=180, anchor=south east] (nt1leu)
-        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
+        { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
     \node[inner sep=0pt, right=1 cm of nt1leu.south west, anchor=north west] (nt2leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
@@ -672,6 +673,19 @@ Your final score is composed of two parts:
     \item Score an additional 2 points for every pair of amino acids that are part of the same group.\\
 \end{itemize}
 
+Count all pairs formed; three of a kind counts as 3 pairs, four of a kind as 6 pairs, and five of a kind as 10 pairs.  
+An amino acid that is member of multiple groups, can be counted in multiple groups.  
+For example Histidine is a member of the Aromatic and Basic groups, and can be counted towards both if the player has both another Aromatic and another Basic amino acid.\\
+
+% neutral bonus
+% If you have collected all acidic and all basic amino acids (2+2), gain 4 of a kind
+
+% acid bonus
+% If you have collected all acidic and all acid deriv amino acids (2+2), gain 4 of a kind
+
+% acid party bonus
+% If you have collected all acidic, basic and acid deriv amino acids (2+2+2), gain 6 of a kind
+
 % shoot the moon
 %If you have translated one amino acid from each group (min 8 cards), you will score 50 points total.
 
@@ -692,14 +706,14 @@ The player with the most points wins!
 \begin{table}[h!]
 \begin{tabular}{rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} rl @{\hskip 18pt} c @{\hskip 18pt} c}
 \hline
-\multicolumn{10}{c}{\textbf{Amino Acids Collected}} & \textbf{Number of Pairs} & \textbf{Total Points} \\
+\multicolumn{10}{c}{\textbf{Amino Acids Collected}} & \textbf{Number of Pairs} & \textbf{Total Points for this hand} \\
 \hline
 \tikz[]{\node{\usebox{\unusualbox}};}  & Pro & \tikz[]{\node{\usebox{\unusualbox}};}  & Gly &&&&&&& 1 & 4\\
 \tikz[]{\node{\usebox{\acidicbox}};}  & Glu & \tikz[]{\node{\usebox{\acidicbox}};}  & Asp & \tikz[]{\node{\usebox{\basicbox}};}  & Lys & \tikz[]{\node{\usebox{\basicbox}};}  & Arg &&& 2 & 8\\
 \tikz[]{\node{\usebox{\basicbox}};}  & Lys  & \tikz[]{\node{\usebox{\basicbox}};}  & Arg & \tikz[]{\node{\usebox{\basicbox}};}  \tikz[]{\node{\usebox{\aromaticbox}};}  & His &&&&& 3 & 9\\
 \tikz[]{\node{\usebox{\basicbox}};}  & Lys & \tikz[]{\node{\usebox{\basicbox}};}  & Arg & \tikz[]{\node{\usebox{\basicbox}};}  \tikz[]{\node{\usebox{\aromaticbox}};}  & His & \tikz[]{\node{\usebox{\aromaticbox}};}  & Try &&& 4 & 12\\
 \tikz[]{\node{\usebox{\smallpolarbox}};}  & Ser & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Thr & \tikz[]{\node{\usebox{\acidderivbox}};} ~ \tikz[]{\node{\usebox{\smallpolarbox}};}  & Arg & \tikz[]{\node{\usebox{\sulfurbox}};}  ~ \tikz[]{\node{\usebox{\smallpolarbox}};}  & Cys &&& 6 & 16\\
-\tikz[]{\node{\usebox{\aliphaticbox}};}  & Ala & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Met & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Leu & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Ile & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Val & 10 & 25\\
+\tikz[]{\node{\usebox{\aliphaticbox}};}  & Ala & \tikz[]{\node{\usebox{\sulfurbox}};} ~ \tikz[]{\node{\usebox{\aliphaticbox}};}  & Met & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Leu & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Ile & \tikz[]{\node{\usebox{\aliphaticbox}};}  & Val & 10 & 25\\
 \hline
 \end{tabular}
 \label{pointstable}
@@ -727,6 +741,7 @@ The player with the most points wins!
 \textbf{Translation: The Amino Acid Card Game} was designed by Helen V Cook between 2012 and 2014.\\
 
 Many thanks to the many people who have contributed to this game in terms of playtesting and ideas.
+A full list of credits is available online.
 Special thanks to Saul Pwanson for the inspiration for the game, his critical eye throughout the design process, and his encouragement.\\
 
 Additionally, many thanks to the \TeX{} community at StackExchange for having already answered my questions before I thought to ask them. \\
@@ -735,7 +750,7 @@ The cards and instructions for Translation: The Amino Acid Card Game were typese
 
 \section*{Version}
 
-This is version 1.0, released August 7\textsuperscript{th} 2014.  
+This is version 1.1, released August 8\textsuperscript{th} 2014.  
 
 
 \section*{License}
@@ -747,7 +762,7 @@ If you adapt this work, I would love to hear from you!
 
 \section*{Connect}
 
-Visit http://aminoacidcardgame.com for:
+http://github.com/bitmask/amino-acid-card-game
 
 \begin{itemize}
     \item Expansion sets
