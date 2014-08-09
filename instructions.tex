@@ -98,7 +98,8 @@ The game is composed of the following parts.
     \item 1 card to mark the 5' end
     %\item 6 turn summary cards
     %\item 1 nucleotide and mutation summary card
-    \item 1 4-sided die with A, C, T, G on each side % TODO fix dice
+    \item 1 white 8-sided die with A, T, C, G x 2 on each side 
+    \item 1 black 8-sided die with A, T, C, G, W, S, Y, R on each side 
     \item These instructions
 \end{itemize}
 
@@ -297,7 +298,7 @@ Mutation cards are available for each type of mutation (complement, transition a
     \item Give each player 1 Toggle Water card and 3 Extend cards.
     \item Find the number of action cards that should be in the game by dividing the number of players by 2 (round up with odd numbers).  Sort the remaining action cards by type and lay out this many of each of type, arranged by cost.
     \item Shuffle the amino acid cards, and deal 5 face up.  
-    \item Roll the die 5 times, and lay out a nucleotide sequence representing your dice rolls.  Put the 5' card at the beginning of this sequence.  You will always read the sequence from the 5' end to the (unmarked) 3' end, following the arrow indicated on the 5' card.  Place the rest of the nucleotides aside. 
+    \item Roll the white die 5 times, and lay out a nucleotide sequence representing your dice rolls.  Put the 5' card at the beginning of this sequence.  You will always read the sequence from the 5' end to the (unmarked) 3' end, following the arrow indicated on the 5' card.  Place the rest of the nucleotides aside. 
     \item Place the Water Level card in the playing area, and flip it so the water is ON.
     \item Decide who goes first by some fair and balanced means.
     \item Play proceeds clockwise around the table.\\
@@ -406,7 +407,7 @@ Mutation cards are available for each type of mutation (complement, transition a
 \section*{Taking a turn}
 
 On your turn, you have 5 action points available to you.
-If there are less than 4 nucleotides in the sequence at the start of your turn, then roll the die to fill it up to four as a free action.
+If there are less than 4 nucleotides in the sequence at the start of your turn, then roll the white die to fill it up to four as a free action.
 Then, you may take any of the following actions, as many times as you'd like, in any order -- given that you have enough points to do so.
 
 \begin{table}[h!]
@@ -440,9 +441,9 @@ If you have two action cards of the same type in your hand, you may play them bo
 \textbf{Action Card} & \textbf{Buy} & \textbf{Use} & \textbf{Available} & \textbf{Result} \\
 \hline
     Toggle Water                 & 0 & 1 & N & Flip the water card to toggle the hydrophobicity of amino acids that can be translated. \\
-    Extend                       & 0 & 1 & N & Roll the die to select a nucleotide, and add it to the end of the nucleotide sequence. May be used multiple times in one round.\\
+    Extend                       & 0 & 1 & N & Roll the white die to select a nucleotide, and add it to the end of the nucleotide sequence. May be used multiple times in one round.\\
     Delete                       & 2 & 1 & N/2 & Delete one nucleotide from anywhere in the nucleotide sequence. \\
-    Insert                       & 3 & 1 & N/2 & Roll the die to select a nucleotide, then insert it anywhere in the nucleotide sequence. \\
+    Insert                       & 3 & 1 & N/2 & Roll the black die to select a nucleotide, then insert it anywhere in the nucleotide sequence.  A roll of W, S, R or Y gives you the choice of either of the two nucleotides that abbreviation refers to.\\
     %Complement sequence          & 3 & 1 & N/2 & Rotate all the cards in the nucleotide sequence 180 degrees. \\
     Reverse Complement           & 3 & 1 & N/2 & Swap the 5' and 3' ends by moving the 5' card to the opposite end of the deck and rotating it so that the arrow points towards the nucleotide sequence.  The sequence will now be read in the opposite direction (reverse) on the opposite strand (complement) as the original sequence.  \\
     %Polymerase Chain Reaction (PCR) & 3 & 1 & N/2 & Extend the nucleotide sequence with copies of itself until you run out of table space. \\
@@ -512,10 +513,10 @@ When an amino acid is translated, take the following actions:
     \node[inner sep=0pt, right=of nt2met.north east, rotate=180, anchor=south east] (nt3met)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
-    \node[inner sep=0pt, right=of nt3met.south west, rotate=180, anchor=south east] (nt4met)
+    \node[inner sep=0pt, right=of nt3met.south west, anchor=north west] (nt4met)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=of nt4met.south west, anchor=north west] (water)
+    \node[inner sep=0pt, right=of nt4met.north east, anchor=north west] (water)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
 
 \end{tikzpicture}
@@ -554,19 +555,19 @@ When an amino acid is translated, take the following actions:
     \node[inner sep=0pt] (leu) at (0,0)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{leucine.pdf}} };
 
-    \node[inner sep=0pt, right=2 cm of leu.north east, rotate=180, anchor=south east] (nt1leu)
+    \node[inner sep=0pt, right=2 cm of leu.north east, anchor=north west] (nt1leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt1leu.south west, anchor=north west] (nt2leu)
+    \node[inner sep=0pt, right=1 cm of nt1leu.north east, anchor=north west] (nt2leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt2leu.north east, rotate=180, anchor=south east] (nt3leu)
+    \node[inner sep=0pt, right=1 cm of nt2leu.north east, anchor=north west] (nt3leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+    \node[inner sep=0pt, right=1 cm of nt3leu.north east, rotate=180, anchor=south east] (nt4leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt4leu.north east, rotate=180, anchor=south east] (fiveprimeleu)
+    \node[inner sep=0pt, right=1 cm of nt4leu.south west, rotate=180, anchor=south east] (fiveprimeleu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
 
     \node[inner sep=0pt, right=1 cm of fiveprimeleu.south west, anchor=north west] (water)
@@ -587,13 +588,13 @@ When an amino acid is translated, take the following actions:
     \node[inner sep=0pt, right=1 cm of nt1leu.south west, rotate=180, anchor=south east] (nt2leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt2leu.south west, rotate=180, anchor=south east] (nt3leu)
+    \node[inner sep=0pt, right=1 cm of nt2leu.south west, anchor=north west] (nt3leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+    \node[inner sep=0pt, right=1 cm of nt3leu.north east, rotate=180, anchor=south east] (nt4leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt4leu.north east, rotate=180, anchor=south east] (fiveprimeleu)
+    \node[inner sep=0pt, right=1 cm of nt4leu.south west, rotate=180, anchor=south east] (fiveprimeleu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
 
     \node[inner sep=0pt, right=1 cm of fiveprimeleu.south west, anchor=north west] (water)
@@ -613,19 +614,19 @@ To correct this, play a Reverse Complement card, then you will be able to transl
     \node[inner sep=0pt, right=2 cm of leu.north east, anchor=north west] (fiveprimeleu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{fiveprime.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of fiveprimeleu.north east, rotate=180, anchor=south east] (nt1leu)
+    \node[inner sep=0pt, right=1 cm of fiveprimeleu.north east, anchor=north west] (nt1leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt1leu.south west, rotate=180, anchor=south east] (nt2leu)
+    \node[inner sep=0pt, right=1 cm of nt1leu.north east, rotate=180, anchor=south east] (nt2leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
     \node[inner sep=0pt, right=1 cm of nt2leu.south west, rotate=180, anchor=south east] (nt3leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt3leu.south west, anchor=north west] (nt4leu)
+    \node[inner sep=0pt, right=1 cm of nt3leu.south west, rotate=180, anchor=south east] (nt4leu)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=1 cm of nt4leu.north east, anchor=north west] (water)
+    \node[inner sep=0pt, right=1 cm of nt4leu.south west, anchor=north west] (water)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateroff.pdf}} };
 
 \end{tikzpicture}\\
@@ -650,10 +651,10 @@ To correct this, you could for example Complement the C to a G and then translat
     \node[inner sep=0pt, right=of nt2met.north east, rotate=180, anchor=south east] (nt3met)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntA.pdf}} };
 
-    \node[inner sep=0pt, right=of nt3met.south west, rotate=180, anchor=south east] (nt4met)
+    \node[inner sep=0pt, right=of nt3met.south west, anchor=north west] (nt4met)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{ntC.pdf}} };
 
-    \node[inner sep=0pt, right=of nt4met.south west, anchor=north west] (water)
+    \node[inner sep=0pt, right=of nt4met.north east, anchor=north west] (water)
         { \frame{\includegraphics[trim=4mm 4mm 4mm 4mm, clip, width=1.5cm]{wateron.pdf}} };
 
 
@@ -750,7 +751,7 @@ The cards and instructions for Translation: The Amino Acid Card Game were typese
 
 \section*{Version}
 
-This is version 1.1, released August 8\textsuperscript{th} 2014.  
+This is version 1.2, released August 9\textsuperscript{th} 2014.  
 
 
 \section*{License}
@@ -762,14 +763,11 @@ If you adapt this work, I would love to hear from you!
 
 \section*{Connect}
 
+PDFs of the cards and instructions and a full listing of the credits is available at: 
 http://github.com/bitmask/amino-acid-card-game
 
-\begin{itemize}
-    \item Expansion sets
-    \item Game variants
-    \item PDFs of the cards and instructions
-    \item Full listing of credits
-\end{itemize}
+    %\item Expansion sets
+    %\item Game variants
 
 
 

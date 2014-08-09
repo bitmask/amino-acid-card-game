@@ -1054,17 +1054,36 @@
         \node (T) [rotate=90, anchor=south west, xshift=1.0cm, yshift=0.5cm] at (trimmed page.south east) {\usebox{\Tnb}};
 
     \path
-        (A) edge[mut, sloped] node {Transition}   (G)
-            edge[mut] node {}             (C)
+        (A) edge[mut] node {} (G)
+            edge[mut] node {} (C)
         (G) edge[mut] node {} (T)
-        (T) edge[mut, sloped] node {Transition}   (C)
-            edge[mut] node {}   (A)
-        (C) edge[mut] node {}   (G)
+        (T) edge[mut] node {} (C)
+            edge[mut] node {} (A)
+        (C) edge[mut] node {} (G)
         ;
 
-        \node [rotate=90, anchor=center] at ($(A)!0.5!(T)$) {Complement};
-        \node [rotate=90, anchor=center] at ($(G)!0.5!(C)$) {Complement};
-        \node [rotate=90, anchor=center] at ($(T)!0.5!(G)$) {Transversion};
+        \node (comp1) [rotate=90, anchor=center] at ($(A)!0.5!(T)$) {\scalefont{1.4}{{Complement}}};
+        \node (comp2) [rotate=90, anchor=center] at ($(G)!0.5!(C)$) {\scalefont{1.4}{{Complement}}};
+        \node (trans1) [rotate=90, anchor=center] at ($(A)!0.5!(G)$) {\scalefont{1.4}{{Transition}}};
+        \node (trans2) [rotate=90, anchor=center] at ($(T)!0.5!(C)$) {\scalefont{1.4}{{Transition}}};
+        \node (transv) [rotate=90, anchor=center] at ($(T)!0.5!(G)$) {\scalefont{1.4}{{Transversion}}};
+
+        \node (fliptrans) [align=center, anchor=center, rotate=90, yshift=-10pt, xshift=-5pt, anchor=center, grey] at ($(trans1)!0.45!(G)$) {flip};
+        \node (linestart) [below right=0.2cm of fliptrans.south west] {};
+        \node (lineend) [above right=0.2cm of fliptrans.south east] {};
+        \draw [-latex, line width=1pt, grey] (linestart) -- (lineend);
+
+        \node (arcstart) [align=center, anchor=center, rotate=90, xshift=-0.75cm, grey] at ($(comp1)!0.4!(T)$) {rotate};
+        \draw [latex-, line width=1pt, grey] (arcstart) ++(0:0.5cm) arc (0:+180:0.5cm);
+
+        \node (fliptransv) [align=right, anchor=east, rotate=90, xshift=0.75cm, grey] at ($(transv)!0.5!(C)$) {flip};
+        \node (linestart) [above left=0.2cm of fliptransv.north east] {};
+        \node (lineend) [above right=0.2cm of fliptransv.south east] {};
+        \draw [-latex, line width=1pt, grey] (linestart) -- (lineend);
+
+
+
+
 
     \end{tikzpicture}    
     \clearpage
@@ -1140,7 +1159,7 @@
         \node [above = 1.5cm of firstbot] (firsttop)  {\usebox{\Anb}};
         \node [above = 1.5cm of secondbot] (secondtop) {\usebox{\Gnb}};
 
-        \node [below = 3.0cm, text width=3cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the die to insert a random nucleotide anywhere in the sequence.};
+        \node [below = 3.0cm, text width=3.5cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the black die to insert a random nucleotide anywhere in the sequence.};
 
         \node (buypts) [anchor=north east, xshift=-0.25cm, yshift=-0.25cm] at (trimmed page.north east) {Buy: \Huge 3 \normalsize};
         \node (usepts) [below=0.25cm of buypts] {Use: \Huge 1 \normalsize};
@@ -1157,7 +1176,7 @@
         \node [above = 1.5cm of firstbot] (firsttop)  {\usebox{\Anb}};
         \node [above = 1.5cm of secondbot] (secondtop) {\usebox{\Gnb}};
 
-        \node [below = 3.0cm, text width=3cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the die to insert a random nucleotide at the end of the sequence.  May be used multiple times in one round.};
+        \node [below = 3.0cm, text width=4cm, align=center, anchor=center] at (trimmed page.center) {\normalsize Roll the white die to insert a random nucleotide at the end of the sequence.  May be used multiple times in one round.};
 
         \node (buypts) [anchor=north east, xshift=-0.25cm, yshift=-0.25cm] at (trimmed page.north east) {Buy: \Huge 0 \normalsize};
         \node (usepts) [below=0.25cm of buypts] {Use: \Huge 1 \normalsize};
@@ -1214,9 +1233,9 @@
         \node (fiveprime) [above left=1.0cm and 1.5cm of trimmed page.center] {\scalefont{3}{5'}};
         \node (threeprime) [above right=1.0cm and 1.5cm of trimmed page.center, text=grey] {\scalefont{3}{3'}};
 
-        \draw [bend right, line width = 2pt, latex-latex] (fiveprime.south east) to (threeprime.south west);
+        \draw [bend right, line width = 2pt, latex-latex, shorten >=2pt] (fiveprime.south east) to (threeprime.south west);
 
-        \node [below = 2.5cm, text width=3cm, align=center, anchor=center] at (trimmed page.center) {\scalefont{1.4}{Swap} \normalsize the 5' and 3' ends to read the sequence in the opposite direction on the opposite strand.};
+        \node [below = 2.5cm, text width=4cm, align=center, anchor=center] at (trimmed page.center) {\scalefont{1.4}{Swap} \normalsize the 5' and 3' ends to read the sequence in the opposite direction on the opposite strand.};
 
         \node (buypts) [anchor=north east, xshift=-0.25cm, yshift=-0.25cm] at (trimmed page.north east) {Buy: \Huge 3 \normalsize};
         \node (usepts) [below=0.25cm of buypts] {Use: \Huge 1 \normalsize};
