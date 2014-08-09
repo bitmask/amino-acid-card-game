@@ -50,6 +50,7 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
+\usetikzlibrary{decorations.shapes}
 
 \tikzstyle{base}=[remember picture, inner sep=0pt, outer sep=0pt]
 \tikzstyle{card}=[remember picture, inner sep=0pt, outer sep=0pt, overlay]
@@ -628,9 +629,10 @@
     %@{t2}HN*6(-(=O)-N(-)-=(-CH_3)-(=@{t1}O)-)}
 }
 
+
 \newcommand{\hbondat}{
-    \chemmove{ \draw[lightgray, dashed, shorten >=15pt, shorten <=5pt, line width=2pt, line cap=round] (a1)--(t1); }
-    \chemmove{ \draw[lightgray, dashed, shorten >=15pt, shorten <=5pt, line width=2pt, line cap=round] (a2)--(t2); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >= 10pt, shorten <= 5pt, dash pattern = on 0.5pt off 8pt] (a1) to[out=270,in=50] (t1); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=10pt, shorten <=5pt, dash pattern = on 0.5pt off 8pt] (a2) to[out=230,in=115] (t2); }
 }
 
 \newcommand{\guanine}{
@@ -643,9 +645,9 @@
 }
 
 \newcommand{\hbondgc}{
-    \chemmove{ \draw[lightgray, dashed, shorten >=5pt, shorten <=15pt, line width=2pt, line cap=round] (g1)--(c1); }
-    \chemmove{ \draw[lightgray, dashed, shorten >=5pt, shorten <=15pt, line width=2pt, line cap=round] (g2)--(c2); }
-    \chemmove{ \draw[lightgray, dashed, shorten >=5pt, shorten <=15pt, line width=2pt, line cap=round] (g3)--(c3); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=3pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g1) to[out=110, in=250] (c1); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=5pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g2) to[out=65, in=300] (c2); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=2pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g3) to[out=45, in=320] (c3); }
 }
 
 
