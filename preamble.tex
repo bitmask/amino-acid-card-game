@@ -637,17 +637,17 @@
 
 \newcommand{\guanine}{
     %\chemfig[line width=2pt, scale=1.1][scale=1.1]{[:120]-[,2]N*5(-*6(-N=(-@{g3}NH_2)-[,,,1]@{g2}NH-[,,1,](=@{g1}O)-=)--N=-)}
-    \chemfig[line width=2pt, scale=1.1, rotate=180][scale=1.1, rotate=180]{[:-60]-[,2]N*5(-*6(-N=(-@{g3}H_2N)-[,,,2]@{g2}HN-[,,2,](=@{g1}O)-=)--N=-)}
+    \chemfig[line width=2pt, scale=1.1][scale=1.1]{[:-60]-[,2]N*5(-*6(-N=(-@{g3}H_2N)-[,,,2]@{g2}HN-[,,2,](=@{g1}O)-=)--N=-)}
 }
 
 \newcommand{\cytosine}{
-    \chemfig[line width=2pt, scale=1.1][scale=1.1]{[:-120]-[,2]N*6(-=-(-@{c1}H_2N)=@{c2}N-(=@{c3}O)-)}
+    \chemfig[line width=2pt, scale=1.1, rotate=180][scale=1.1, rotate=180]{[:-120]-[,2]N*6(-=-(-@{c1}H_2N)=@{c2}N-(=@{c3}O)-)}
 }
 
 \newcommand{\hbondgc}{
-    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=3pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g1) to[out=110, in=250] (c1); }
-    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=5pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g2) to[out=65, in=300] (c2); }
-    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=2pt, shorten <=17pt, dash pattern = on 0.5pt off 8pt] (g3) to[out=45, in=320] (c3); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=15pt, shorten <=5pt, dash pattern = on 0.5pt off 8pt] (g1) to[out=290, in=70] (c1); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=10pt, shorten <=5pt, dash pattern = on 0.5pt off 8pt] (g2) to[out=240, in=125] (c2); }
+    \chemmove{ \draw[lightgray, line width=4pt, line cap=round, shorten >=15pt, shorten <=5pt, dash pattern = on 0.5pt off 8pt] (g3) to[out=240, in=135] (c3); }
 }
 
 
@@ -969,8 +969,8 @@
             \hbondat;
         }
         {
-            \node[anchor=north] at (stock page.north) {\molecule{\cytosine}};
-            \node[anchor=south] at (stock page.south) {\molecule{\guanine}};
+            \node[anchor=north] at (stock page.north) {\molecule{\guanine}};
+            \node[anchor=south] at (stock page.south) {\molecule{\cytosine}};
             \hbondgc;
         }
 
