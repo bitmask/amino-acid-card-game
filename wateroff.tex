@@ -17,17 +17,18 @@
 
 
 
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Water OFF};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Water OFF}};
         \matrix (matt) [matrix of nodes, column sep=1cm, row sep=0.2cm] at (trimmed page.center) {
-            \phantom{Ag} \scalefont{1.4}{Alanine} & \scalefont{1.4}{Cysteine} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Histidine} & \scalefont{1.4}{Isoleucine} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Leucine} & \scalefont{1.4}{Methionine} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Phenylalanine} & \scalefont{1.4}{Tryptophan} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Tyrosine} & \scalefont{1.4}{Valine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{A. Alanine}       & \scalefont{1.4}{L. Leucine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{C. Cysteine}      & \scalefont{1.4}{M. Methionine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{H. Histidine}     & \scalefont{1.4}{W. Tryptophan} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{I. Isoleucine}    & \scalefont{1.4}{V. Valine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{F. Phenylalanine} & \scalefont{1.4}{Y. Tyrosine} \phantom{Ag}\\
         };
         \node [above= 1cm of matt, text width=4.5cm, align=center] {\scalefont{1.4}{Translate only the \\ hydrophobic amino acids:}};
         \node[anchor=south east, yshift=0.25cm, xshift=-0.25cm] at (trimmed page.south east) {\usebox{\hydrobigwhite}};
     \end{tikzpicture}    
+
     \clearpage
 
 \end{document}

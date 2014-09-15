@@ -195,8 +195,8 @@ How to translate amino acids is described in the section \textbf{\nameref{trans}
 \hline
   &     & \textbf{First Name} & \textbf{Amino Acid} & \textbf{Codons} & \textbf{Hydrophobic} & \multicolumn{4}{c}{\textbf{Groups}} \\
 \hline
-A & Ala & Alan     & Alanine       & 4 &  \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\aliphaticbox}};} & Aliphatic   & \\
-R & Arg & Redbeard & Arginine      & 6 &   & \tikz[]{\node{\usebox{\basicbox}};} & Basic       & \\
+A & Ala & Alan     & Alanine       & 4 &  & \tikz[]{\node{\usebox{\aliphaticbox}};} & Aliphatic   & \\
+R & Arg & Redbeard & Arginine      & 6 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};}   & \tikz[]{\node{\usebox{\basicbox}};} & Basic       & \\
 N & Asn & Nancy    & Asparagine    & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidderivbox}};}& Acid Deriv. & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar\\
 D & Asp & Devin    & Aspartate     & 2 & \tikz[baseline=0ex]{\node {\usebox{\hydrotiny}};} & \tikz[]{\node{\usebox{\acidicbox}};}  & Acidic      & \\
 C & Cys & Cy       & Cysteine      & 2 &   & \tikz[]{\node{\usebox{\sulfurbox}};}  & Sulfur      & \tikz[]{\node{\usebox{\smallpolarbox}};}  & Small Polar\\
@@ -234,18 +234,18 @@ Abbreviations for groups of nucleotides are shown in the following diagram.
 Only those within the grey box are used in the codons for the amino acids.
 
 \begin{tikzpicture}
-    \node (G) at ( 0, 6) {\usebox{\Gnb}};
-    \node (A) at ( 5, 6) {\usebox{\Anb}};
+    \node (G) at ( 0, 6) {\usebox{\Anb}};
+    \node (A) at ( 5, 6) {\usebox{\Gnb}};
     \node (R) at ( 8, 6) {\usebox{\Rnb}};
-    \node (H) at (11, 6) {\usebox{\HHnb}};
-    \node (B) at (14, 6) {\usebox{\Bnb}};
-    \node (C) at ( 0, 2) {\usebox{\Cnb}};
-    \node (T) at ( 5, 2) {\usebox{\Tnb}};
+    \node (H) at (11, 6) {\usebox{\Bnb}};
+    \node (B) at (14, 6) {\usebox{\HHnb}};
+    \node (C) at ( 0, 2) {\usebox{\Tnb}};
+    \node (T) at ( 5, 2) {\usebox{\Cnb}};
     \node (Y) at ( 8, 2) {\usebox{\Ynb}};
-    \node (D) at (11, 2) {\usebox{\Dnb}};
-    \node (V) at (14, 2) {\usebox{\Vnb}};
-    \node (S) at ( 0, 0) {\usebox{\SSSnb}};
-    \node (W) at ( 5, 0) {\usebox{\Wnb}};
+    \node (D) at (11, 2) {\usebox{\Vnb}};
+    \node (V) at (14, 2) {\usebox{\Dnb}};
+    \node (S) at ( 0, 0) {\usebox{\Wnb}};
+    \node (W) at ( 5, 0) {\usebox{\SSSnb}};
     \node (N) at ( 8, 0) {\usebox{\Nnb}};
     \node (M) at (11, 0) {\usebox{\Mnb}};
     \node (K) at (14, 0) {\usebox{\Knb}};
@@ -751,7 +751,7 @@ The cards and instructions for Translation: The Amino Acid Card Game were typese
 
 \section*{Version}
 
-This is version 1.2, released August 9\textsuperscript{th} 2014.  
+This is version 1.3, released September 15\textsuperscript{th} 2014.  
 
 
 \section*{License}

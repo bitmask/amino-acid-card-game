@@ -15,19 +15,20 @@
             (leftlevel) to [out=30, in=285] (firstpeak) to [out=315, in=225] (secondpeak) to [out=255, in=315] (rightlevel)
             to [out=270, in=90] (stock page.south east);
 
-        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily Water ON};
+        \node[anchor = north west, xshift=0.25cm, yshift=-0.25cm] (action) at (trimmed page.north west) { \narrowfont\Huge\sffamily \textbf{Water ON}};
 
         \matrix (mat) [yshift=-1cm, matrix of nodes, column sep=1cm, row sep=0.2cm] at (trimmed page.center) {
-            \phantom{Ag} \scalefont{1.4}{Arginine} & \scalefont{1.4}{Asparagine} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Aspartate} & \scalefont{1.4}{Glutamate} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Glutamine} & \scalefont{1.4}{Glycine} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Lysine} & \scalefont{1.4}{Proline} \phantom{Ag}\\
-            \phantom{Ag} \scalefont{1.4}{Serine} & \scalefont{1.4}{Threonine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{E. Glutamate} &  \scalefont{1.4}{P. Proline} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{D. Aspartate} &  \scalefont{1.4}{Q. Glutamine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{G. Glycine} &    \scalefont{1.4}{R. Arginine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{K. Lysine} &     \scalefont{1.4}{S. Serine} \phantom{Ag}\\
+            \phantom{Ag} \scalefont{1.4}{N. Asparagine} & \scalefont{1.4}{T. Threonine} \phantom{Ag}\\
         };
         \node [above= 1cm of mat, text width=4.5cm, align=center] {\scalefont{1.4}{Translate only the \\ hydrophilic amino acids:}};
         \node[anchor=south east, yshift=0.25cm, xshift=-0.25cm] at (trimmed page.south east) {\usebox{\hydrobigwhite}};
 
     \end{tikzpicture}    
+ 
     \clearpage
 
 \end{document}
