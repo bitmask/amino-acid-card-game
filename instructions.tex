@@ -231,7 +231,7 @@ V & Val & Valerie  & Valine        & 4 &   & \tikz[]{\node{\usebox{\aliphaticbox
 There are 4 colours for the nucleotides: dark red, dark blue, light red (pink) and light blue. 
 The colours of the nucleotides have been chosen so that there is similarity between the nucleotides of the same colours (red and blue) and between nucleotides of the same lightness (light and dark).
 Abbreviations for groups of nucleotides are shown in the following diagram.
-Only those within the grey box are used in the codons for the amino acids.
+Only those within the grey lines are used in the codons for the amino acids.
 
 \begin{tikzpicture}
     \node (G) at ( 0, 6) {\usebox{\Anb}};
@@ -259,7 +259,10 @@ Only those within the grey box are used in the codons for the amino acids.
         (T) edge[mut] node {Transition}   (C)
         ;
 
-    \draw [lightgrey, line width=2pt] (-1.5,1.0) -- (6.5,1) -- (6.5, -1.0) -- (9.5, -1,0) -- (9.5, 5.0) -- (12.5, 5,0) -- (12.5, 7.0) -- (-1.5, 7.0) -- cycle;
+% \draw [lightgrey, line width=2pt] (-1.5,1.0) -- (6.5,1) -- (6.5, -1.0) -- (9.5, -1,0) -- (9.5, 5.0) -- (12.5, 5,0) -- (12.5, 7.0) -- (-1.5, 7.0) -- cycle;
+
+    \draw [lightgrey, line width=2pt] (-1.5,1.0) -- (6.5,1) -- (6.5, -1.0) -- (9.5, -1,0) -- (9.5, 7.0) -- (-1.5, 7.0) -- cycle ;
+    \draw [lightgrey, line width=2pt] (12.5, 5,0) -- (12.5, 7.0) -- (15.5, 7.0) -- (15.5, 5) -- cycle;
     \path[use as bounding box] (-1.5,-1.5) rectangle (16,7.5);
 \end{tikzpicture}
 
