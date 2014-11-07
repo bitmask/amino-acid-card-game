@@ -1,0 +1,71 @@
+
+% build each card individually twice or three times
+% then build the instructions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Instructions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt,oneside]{memoir} 
+% A4 210 × 297 mm
+%\usepackage[textheight={26.5cm},textwidth={17cm}, marginparsep={0.6cm}, marginparwidth={1cm}, includemp, centering]{geometry}
+
+%\setstocksize{4in}{3in}  % height, width
+%\settrimmedsize{3.75in}{2.75in}{*}
+%\settrims{0.125in}{0.125in}
+
+%\settypeblocksize{26.6cm}{17cm}{*}
+%\setlrmargins{1cm}{1cm}{*}
+%\setulmargins{1cm}{1cm}{*}
+%\checkandfixthelayout
+
+\setulmarginsandblock{1.5cm}{1.5cm}{*}
+\setlrmarginsandblock{1.5cm}{1.5cm}{*}
+\checkandfixthelayout
+
+% TODOv2 UTF8
+
+\usepackage{enumitem}
+\setlist{nolistsep} % or \setlist{noitemsep} to leave space around whole list
+
+\usepackage{placeins} % provides \FloatBarrier
+
+\usepackage{nameref}  % refer to the name of the sections not their numbers
+
+\usepackage{wrapfig} % wrap text around tikzpicture
+
+\usepackage{graphicx} % include the completed cards on the page as pdfs.  is there a better way?
+
+\usepackage{epsdice}  % draw the dice
+
+\input{preamble}
+
+
+
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+
+
+\FloatBarrier
+\begin{table}[h!]
+\begin{tabular}{ccccc}
+    \multicolumn{2}{c}{\Large \textbf{White Die}} & \phantom{space} & \multicolumn{2}{c}{\Large \textbf{Black Die}} \\
+    \multicolumn{2}{c}{Extend, beginning of game} && \multicolumn{2}{c}{Insert}\\
+    \Huge \epsdice{1} & \tikz[baseline=-2ex]{\node{\usebox{\Tnb}};} && \Huge \epsdice[black]{1} & \tikz[baseline=-2ex]{\node{\usebox{\Tnb}};} \\
+    \Huge \epsdice{2} & \tikz[baseline=-2ex]{\node{\usebox{\Cnb}};} && \Huge \epsdice[black]{2} & \tikz[baseline=-2ex]{\node{\usebox{\Cnb}};} \\
+    \Huge \epsdice{3} & \tikz[baseline=-2ex]{\node{\usebox{\Gnb}};} && \Huge \epsdice[black]{3} & \tikz[baseline=-2ex]{\node{\usebox{\Gnb}};} \\
+    \Huge \epsdice{4} & \tikz[baseline=-2ex]{\node{\usebox{\Anb}};} && \Huge \epsdice[black]{4} & \tikz[baseline=-2ex]{\node{\usebox{\Anb}};} \\
+    \Huge \epsdice{5} & \raisebox{1ex}{Roll again} && \Huge \epsdice[black]{5} & \tikz[baseline=-2ex]{\node{\usebox{\SSSnb}};} \\
+    \Huge \epsdice{6} & \raisebox{1ex}{Roll again} && \Huge \epsdice[black]{6} & \tikz[baseline=-2ex]{\node{\usebox{\Wnb}};} \\
+\end{tabular}
+\end{table}
+\FloatBarrier
+
+
+\end{document}
